@@ -1,0 +1,43 @@
+
+<ion-content class="ion-padding">
+
+  <ion-title class="ion-text-center titulo" color="medium" disabled="true">AGREGAR TAREA</ion-title>
+
+  <ion-item>
+    <ion-label></ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-input (ionChange)="nombretarea( $event )" class="ion-text-center texto-grande margen" placeholder="NOMBRE DE TAREA"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label class="ion-text-center texto-grande margen-plus" color="medium">ELEGIR COLOR  <ion-icon slot="end" name="color-palette"></ion-icon></ion-label>
+    <ion-select placeholder="" cancelText="Cancelar" color="primary" (ionChange)="colorSeleccionado( $event )" debounce="250">
+      <ion-select-option value="azul">Azul</ion-select-option>
+      <ion-select-option value="rojo">Rojo</ion-select-option>
+      <ion-select-option value="amarillo">Amarillo</ion-select-option>
+      <ion-select-option value="verde">Verde</ion-select-option>
+      <ion-select-option value="naranja">Naranja</ion-select-option>
+      <ion-select-option value="morado">Morado</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="margen centrado" lines="none">
+    <ion-label class="icono-grande"><ion-icon color="{{ color }}" slot="icon-only" name="square"></ion-icon></ion-label>
+  </ion-item>
+
+
+  
+  
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-button color="danger" (click)="cancelarTarea()" expand="block" >
+    CANCELAR
+  </ion-button>
+  <ion-button (click)="agregarTareaModal()" expand="block">
+    ACEPTAR
+  </ion-button>
+</ion-footer>

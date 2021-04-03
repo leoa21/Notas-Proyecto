@@ -9,11 +9,25 @@ const routes: Routes = [
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
-  },  {
+    children: [
+      {
+        path:'',
+        loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+      },
+      {
+      path: ":nombreClase",
+      loadChildren: () => import('./pages/tareas/tareas.module').then(m => m.TareasPageModule)
+      }
+    ]
+  },
+  {
     path: 'agregar-materia',
     loadChildren: () => import('./pages/agregar-materia/agregar-materia.module').then( m => m.AgregarMateriaPageModule)
+  },  {
+    path: 'agregar-tarea',
+    loadChildren: () => import('./pages/agregar-tarea/agregar-tarea.module').then( m => m.AgregarTareaPageModule)
   },
+
 
 
 ];

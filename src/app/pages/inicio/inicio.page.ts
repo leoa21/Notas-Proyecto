@@ -20,6 +20,7 @@ export class InicioPage implements OnInit {
     
   }
 
+  
   async agregarMateria() {
     const modal = await this.modalController.create({
       component: AgregarMateriaPage,
@@ -36,6 +37,11 @@ export class InicioPage implements OnInit {
     console.log(this.materias);
   }
 
+ borrarMateria(){
+ }
+    
+
+  }
   
 
-}
+
