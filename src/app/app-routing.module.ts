@@ -27,7 +27,11 @@ const routes: Routes = [
   {
     path: 'agregar-tarea',
     loadChildren: () => import('./pages/agregar-tarea/agregar-tarea.module').then( m => m.AgregarTareaPageModule)
+  },  {
+    path: 'detalles-tarea',
+    loadChildren: () => import('./pages/detalles-tarea/detalles-tarea.module').then( m => m.DetallesTareaPageModule)
   },
+
 
 
 

@@ -7,11 +7,10 @@
 
   <ion-title class="ion-text-center titulo" color="medium" disabled="true">TAREAS DISPONIBLES</ion-title>
   <ion-list>
-    <ion-item-sliding *ngFor="let tarea of tareas;let i = index">
+    <ion-item-sliding *ngFor="let tarea of tareas;let i = index" [routerLink]="['/detalles-tarea']">
 
       <ion-item>
-        <ion-label class="texto-grande"><ion-icon slot="icon-only" name="square" color="{{tarea.colorTarea}}"></ion-icon> {{tarea.nombreTarea}}</ion-label>
-        <p color="medium">0/0</p> 
+        <ion-label class="texto-grande"><ion-icon slot="icon-only" name="square"></ion-icon> {{tarea.nombreTarea}}</ion-label>
       </ion-item>
 
       <ion-item-options side="end">

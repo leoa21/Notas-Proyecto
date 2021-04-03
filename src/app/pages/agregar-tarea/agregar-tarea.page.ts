@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Photo } from 'src/app/models/photo.interface';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-agregar-tarea',
@@ -8,13 +10,18 @@ import { ModalController } from '@ionic/angular';
 })
 export class AgregarTareaPage implements OnInit {
 
+  public photos: Photo[] =[]
   color: string = 'medium';
   nombre: string = '';
+  detalle: string ="";
   
   @Input() nombreTarea: string;
   @Input() colorTarea: string;
+  @Input() detalleTarea: string;
 
-  constructor( private modalController: ModalController ) { }
+  constructor( private modalController: ModalController, private photoSvc: PhotoService ) {
+   this.photos = photoSvc.getPhotos();
+   }
 
   ngOnInit() {
   }
@@ -22,7 +29,8 @@ export class AgregarTareaPage implements OnInit {
   agregarTareaModal() {
     this.modalController.dismiss({
       nombreTarea: this.nombre,
-      colorTarea: this.color
+      colorTarea: this.color,
+      detalleTarea: this.detalleTarea
     });
   }
 
@@ -38,4 +46,11 @@ export class AgregarTareaPage implements OnInit {
     this.nombre = e.detail.value;
   }
 
+  public newPhoto(): void{
+    this.photoSvc.addNewToGallery()
+  }
+
+  detalletarea( e ) {
+    this.detalle = e.detail.value;
+  }
 }
