@@ -8,7 +8,7 @@
   <ion-title class="ion-text-center titulo" color="medium" disabled="true">MATERIAS DISPONIBLES</ion-title>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let materia of materias;let i = index" [routerLink]="['/inicio',nombreClase]">
+    <ion-item-sliding *ngFor="let materia of materias;let i = index" [routerLink]="['/inicio/tareas']">
 
       <ion-item>
         <ion-label class="texto-grande"><ion-icon slot="icon-only" name="square" color="{{materia.colorClase}}"></ion-icon> {{materia.nombreClase}}</ion-label>

@@ -15,7 +15,7 @@ const routes: Routes = [
         loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
       },
       {
-      path: ":nombreClase",
+      path: ":tareas",
       loadChildren: () => import('./pages/tareas/tareas.module').then(m => m.TareasPageModule)
       }
     ]
@@ -23,7 +23,8 @@ const routes: Routes = [
   {
     path: 'agregar-materia',
     loadChildren: () => import('./pages/agregar-materia/agregar-materia.module').then( m => m.AgregarMateriaPageModule)
-  },  {
+  },
+  {
     path: 'agregar-tarea',
     loadChildren: () => import('./pages/agregar-tarea/agregar-tarea.module').then( m => m.AgregarTareaPageModule)
   },
