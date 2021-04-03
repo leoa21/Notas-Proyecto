@@ -24,3 +24,39 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+ion-progress-bar {
+    width: 100% !important;
+    margin: 0 auto !important; 
+}
+
+.header-progreso {
+    background-color: var(--ion-color-primary) !important;
+    height: 10% !important;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo {
+    margin-top: 5% !important;
+}
+
+.texto-grande {
+    font-size: 25px !important;
+}
+
+.icono-grande {
+    font-size: 50px !important;
+}
+
+p {
+    font-size: large !important;
+}
+
+.centrado {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
