@@ -7,52 +7,56 @@
   </ion-item>
 
   <ion-item>
-    <ion-input (ionChange)="nombretarea( $event )" class="ion-text-center texto-grande margen"
-      placeholder="NOMBRE DE TAREA"></ion-input>
+    <ion-input (ionChange)="obtenerNombreTarea( $event )" class="ion-text-center texto-grande"
+               placeholder="NOMBRE DE TAREA"></ion-input>
   </ion-item>
 
-  <ion-content>
-    <ion-list>
-      <ion-list-header>
-        <ion-label class="ion-text texto-grande margen-plus" color="medium">FECHA</ion-label>
-      </ion-list-header>
-      <ion-item>
-        <ion-label>VENCIMIENTO</ion-label>
-        <ion-icon name="calendar"></ion-icon>
-        <ion-datetime placeholder="VENCIMIENTO" dislay-format="DD-MMMM-YYYY"></ion-datetime>
-      </ion-item>
-    </ion-list>
-    <ion-item>
-      <ion-input (ionChange)="detalletarea( $event )" class="ion-text-center texto-grande margen"
-        placeholder="DETALLE DE TAREA"></ion-input>
-    </ion-item>
-    
-    <ion-list>
-    <ion-list-header>
-      <ion-label class="ion-text-right texto-grande margen-plus" color="medium">TOMAR FOTO</ion-label>
-    </ion-list-header>
-    <ion-label>FOTO</ion-label>
-   
-    
-        <ion-button slot="end" (click)="newPhoto()">
-          <ion-icon name="camera" color="light"></ion-icon>
-        </ion-button>
-        <ion-col size="6" *ngFor="let photo of photos; index as position">
-          <ion-img src="{{photo.webviewPath}}"></ion-img>
-        </ion-col>
-    </ion-list>
-  </ion-content>
+  <ion-item (ionChange)="fechaSeleccionado( $event )">
+    <ion-label class="texto-grande ion-text-center" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
+    <ion-datetime placeholder="SELECCIONAR" displayFormat="MMM DD, YYYY, HH:mm" display-timezone="utc"></ion-datetime>
+  </ion-item>
 
-  
-    
-  
+  <ion-item>
+    <ion-textarea (ionChange)="obtenerDetalleTarea( $event )" class="ion-text-center texto-mediano margen"
+      placeholder="DETALLE DE TAREA"></ion-textarea>
+  </ion-item>
 
+  <ion-item>
+    <ion-label color="medium">SELECCIONAR STATUS</ion-label>
+    <ion-select placeholder="" cancelText="Cancelar" (ionChange)="statusSeleccionado( $event )" debounce="250">
+      <ion-select-option value="danger">Pendiente</ion-select-option>
+      <ion-select-option value="warning">En Proceso</ion-select-option>
+      <ion-select-option value="success">Terminado</ion-select-option>
+    </ion-select>
+  </ion-item>
     
-  <ion-footer class="ion-no-border">
-    <ion-button color="danger" (click)="cancelartarea()" expand="block">
-      CANCELAR
-    </ion-button>
-    <ion-button (click)="agregarTareaModal()" expand="block">
-      ACEPTAR
-    </ion-button>
-  </ion-footer>
+  <ion-item lines="none">
+    <ion-label class="ion-text-center texto-grande" color="medium">TOMAR FOTO</ion-label>
+  </ion-item>
+
+  <ion-button (click)="newPhoto()" expand="block">
+    <ion-icon name="camera" color="light"></ion-icon>
+  </ion-button>
+
+  <ion-col *ngFor="let photo of photos; index as position">
+      <ion-img src="{{photo.webviewPath}}"></ion-img>
+  </ion-col>
+
+  <ion-item lines="none">
+    <ion-label class="ion-text-center texto-grande" color="medium">SELECCIONAR FOTO</ion-label>
+  </ion-item>
+
+  <ion-button (click)="fotoGaleria()" expand="block">
+    <ion-icon name="image" color="light"></ion-icon>
+  </ion-button>
+  
+</ion-content>
+    
+<ion-footer class="ion-no-border">
+  <ion-button color="danger" (click)="cancelartarea()" expand="block">
+    CANCELAR
+  </ion-button>
+  <ion-button color="primary" (click)="agregarTareaModal()" expand="block">
+    ACEPTAR
+  </ion-button>
+</ion-footer>

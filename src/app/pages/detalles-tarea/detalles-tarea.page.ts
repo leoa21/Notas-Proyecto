@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-detalles-tarea',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetallesTareaPage implements OnInit {
 
+  
+
   constructor() { }
 
   ngOnInit() {
+    
   }
+
+  
 
 }

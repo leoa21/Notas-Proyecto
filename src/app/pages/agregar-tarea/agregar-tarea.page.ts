@@ -11,13 +11,14 @@ import { PhotoService } from 'src/app/services/photo.service';
 export class AgregarTareaPage implements OnInit {
 
   public photos: Photo[] =[]
-  color: string = 'medium';
+  
   nombre: string = '';
-  detalle: string ="";
+  detalle: string ='';
+  color: string = '';
   
   @Input() nombreTarea: string;
-  @Input() colorTarea: string;
   @Input() detalleTarea: string;
+  @Input() colorTarea: string;
 
   constructor( private modalController: ModalController, private photoSvc: PhotoService ) {
    this.photos = photoSvc.getPhotos();
@@ -30,7 +31,7 @@ export class AgregarTareaPage implements OnInit {
     this.modalController.dismiss({
       nombreTarea: this.nombre,
       colorTarea: this.color,
-      detalleTarea: this.detalleTarea
+      detalleTarea: this.detalle
     });
   }
 
@@ -38,11 +39,11 @@ export class AgregarTareaPage implements OnInit {
     this.modalController.dismiss();
   }
 
-  colorSeleccionado( e ) {
-    this.color = e.detail.value;
+  obtenerDetalleTarea( e ) {
+    this.detalle = e.detail.value;
   }
 
-  nombretarea( e ) {
+  obtenerNombreTarea( e ) {
     this.nombre = e.detail.value;
   }
 
@@ -50,7 +51,13 @@ export class AgregarTareaPage implements OnInit {
     this.photoSvc.addNewToGallery()
   }
 
-  detalletarea( e ) {
-    this.detalle = e.detail.value;
+  fechaSeleccionado( event ) {
+    console.log(event);
   }
+
+  statusSeleccionado ( e ) {
+    this.color = e.detail.value;
+  }
+
+  
 }

@@ -1,20 +1,23 @@
 <ion-content>
 
   <ion-item-group class="header-progreso">
-    <ion-title class="ion-text-center" color="light">PROGRESO DE TAREAS</ion-title>
-    <ion-progress-bar color="success" value="0.5"></ion-progress-bar>
+    <ion-title class="ion-text-center" color="light">PROGRESO DE TAREAS:<ion-label color="success">{{porcentage}}%</ion-label></ion-title>
+    <ion-progress-bar color="success" [value]="progreso"></ion-progress-bar>
+    
   </ion-item-group>
 
   <ion-title class="ion-text-center titulo" color="medium" disabled="true">TAREAS DISPONIBLES</ion-title>
-  <ion-list>
-    <ion-item-sliding *ngFor="let tarea of tareas;let i = index" [routerLink]="['/detalles-tarea']">
 
-      <ion-item>
-        <ion-label class="texto-grande"><ion-icon slot="icon-only" name="square"></ion-icon> {{tarea.nombreTarea}}</ion-label>
+  <ion-list>
+    <ion-item-sliding *ngFor="let tarea of tareas;let i = index" >
+
+      <ion-item [routerLink]="['/detalles-tarea']">
+        <ion-label class="texto-grande"><ion-icon slot="icon-only" name="caret-forward" color="{{tarea.colorTarea}}"></ion-icon> {{tarea.nombreTarea}}</ion-label>
+        <p><ion-icon class="texto-grande" color="medium" slot="icon-only" name="image"></ion-icon></p>
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option (click)="borrarTarea()" color="danger"><ion-icon color="light" slot="icon-only" name="trash-outline"></ion-icon></ion-item-option>
+        <ion-item-option (click)="borrarTarea( i )" color="danger"><ion-icon color="light" slot="icon-only" name="trash-outline"></ion-icon></ion-item-option>
       </ion-item-options>
 
     </ion-item-sliding>

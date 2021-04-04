@@ -9,7 +9,7 @@ import { AgregarMateriaPage } from '../agregar-materia/agregar-materia.page';
 })
 export class InicioPage implements OnInit {
 
-  constructor( private modalController: ModalController ) { }
+  constructor( private modalController: ModalController) { }
 
   materias: {
     nombreClase: string, 
@@ -32,14 +32,12 @@ export class InicioPage implements OnInit {
     await modal.present();
 
     const resp = await modal.onWillDismiss();
-    console.log(resp);
     this.materias.push(resp.data);
-    console.log(this.materias);
   }
 
- borrarMateria(){
- }
-    
+  borrarMateria( indice ){
+    this.materias.splice(indice,1);
+  }  
 
   }
   
