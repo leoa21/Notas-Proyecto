@@ -9,9 +9,11 @@
   <ion-title class="ion-text-center titulo" color="medium" disabled="true">TAREAS DISPONIBLES</ion-title>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let tarea of tareas;let i = index" >
+    <ion-item-sliding *ngFor="let tarea of arregloTareas;let i = index">
 
-      <ion-item [routerLink]="['/detalles-tarea']">
+    <div *ngIf="tarea.materiaID === indiceDeMateria">
+
+      <ion-item [routerLink]="['/detalles-tarea']" (click)="obtenerIndexTarea( i )">
         <ion-label class="texto-grande"><ion-icon slot="icon-only" name="caret-forward" color="{{tarea.colorTarea}}"></ion-icon> {{tarea.nombreTarea}}</ion-label>
         <p><ion-icon class="texto-grande" color="medium" slot="icon-only" name="image"></ion-icon></p>
       </ion-item>
@@ -20,12 +22,20 @@
         <ion-item-option (click)="borrarTarea( i )" color="danger"><ion-icon color="light" slot="icon-only" name="trash-outline"></ion-icon></ion-item-option>
       </ion-item-options>
 
+    </div>
+
     </ion-item-sliding>
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="agregarTarea()">
       <ion-icon color="light" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="medium"  (click)="actualizarBarra()">
+      <ion-icon color="light" name="refresh"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   

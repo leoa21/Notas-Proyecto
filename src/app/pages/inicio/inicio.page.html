@@ -1,16 +1,16 @@
 <ion-content>
 
   <ion-item-group class="header-progreso">
-    <ion-title class="ion-text-center" color="light">PROGRESO DE TAREAS</ion-title>
-    <ion-progress-bar color="success" value="0.5"></ion-progress-bar>
+    <ion-title class="ion-text-center" color="light">PROGRESO DE TAREAS:<ion-label color="success">{{porcentage}}%</ion-label></ion-title>
+    <ion-progress-bar color="success" [value]="progreso"></ion-progress-bar>
   </ion-item-group>
 
   <ion-title class="ion-text-center titulo" color="medium" disabled="true">MATERIAS DISPONIBLES</ion-title>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let materia of materias;let i = index" >
+    <ion-item-sliding *ngFor="let materia of arregloMaterias;let i = index" >
 
-      <ion-item [routerLink]="['/inicio/tareas']">
+      <ion-item [routerLink]="['/inicio/tareas']" (click)="obtenerIndex( i )">
         <ion-label class="texto-grande"><ion-icon slot="icon-only" name="square" color="{{materia.colorClase}}"></ion-icon> {{materia.nombreClase}}</ion-label>
         <p color="medium">0/0</p> 
       </ion-item>
@@ -25,6 +25,12 @@
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="agregarMateria()">
       <ion-icon color="light" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="medium"  (click)="actualizarBarra()">
+      <ion-icon color="light" name="refresh"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   

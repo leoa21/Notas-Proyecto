@@ -1,10 +1,41 @@
-<ion-header>
-  <ion-toolbar class="ion-text-center">
-    <ion-title>DETALLES TAREA</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
 
-<ion-content>
+  <ion-title class="ion-text-center titulo" color="medium" disabled="true">DETALLES DE TAREA</ion-title>
 
+  <ion-item>
+    <ion-label class="ion-text-center texto-grande">{{arregloTareas[indiceDeTarea].nombreTarea}}</ion-label>
+  </ion-item>
 
+  <ion-item>
+    <ion-label class="texto-grande ion-text-center" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
+    <ion-label displayFormat="MMM DD, YYYY, HH:mm">{{arregloTareas[indiceDeTarea].fechaTarea | date:'medium'}}</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-textarea class="ion-text-center" texto-grande>{{arregloTareas[indiceDeTarea].detalleTarea}}</ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="medium">STATUS: </ion-label>
+    <ion-select placeholder="{{placeHolder}}" cancelText="Cancelar" (ionChange)="statusSeleccionado( $event )" debounce="250">
+      <ion-select-option value="danger">Pendiente</ion-select-option>
+      <ion-select-option value="warning">En Proceso</ion-select-option>
+      <ion-select-option value="success">Terminado</ion-select-option>
+    </ion-select>
+  </ion-item>
+    
+  <ion-item lines="none">
+    <ion-label class="ion-text-center texto-grande" color="medium">FOTOS</ion-label>
+  </ion-item>
+
+  <ion-col *ngFor="let photo of photos; index as position">
+      <ion-img src="{{photo.webviewPath}}"></ion-img>
+  </ion-col>
+  
 </ion-content>
+    
+<ion-footer class="ion-no-border">
+  <ion-button [routerLink]="['/inicio/tareas']" color="primary" expand="block">
+    ACEPTAR
+  </ion-button>
+</ion-footer>
