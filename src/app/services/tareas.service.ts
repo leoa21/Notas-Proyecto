@@ -31,4 +31,23 @@ export class TareasService {
     return this.tareas;
   }
 
+  borrarTareaService( index:number ) {
+    for (let i = 0; i < this.tareas.length; i++) {
+      if (index === this.tareas[i].materiaID) {
+        this.tareas.splice(i,1);
+      }
+      if ( this.tareas[i].materiaID > index ) {
+        this.tareas[i].materiaID = this.tareas[i].materiaID - 1;
+      }
+    }
+
+    for (let i = 0; i < this.tareas.length; i++) {
+      if ( this.tareas[i].materiaID > index ) {
+        this.tareas[i].materiaID = this.tareas[i].materiaID - 1;
+      }
+    }
+
+    console.log(this.tareas);
+  }
+
 }

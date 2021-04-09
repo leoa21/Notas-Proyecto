@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { AgregarTareaPage } from '../agregar-tarea/agregar-tarea.page';
 import { TareasService } from '../../services/tareas.service';
 
@@ -11,7 +11,8 @@ import { TareasService } from '../../services/tareas.service';
 export class TareasPage implements OnInit {
 
   constructor( private modalController: ModalController,
-               private tareasService: TareasService) { }
+               private tareasService: TareasService,
+               private toastController: ToastController) { }
 
   indiceDeMateria: number;
   arregloMaterias = this.tareasService.obtenerMaterias();
@@ -23,7 +24,6 @@ export class TareasPage implements OnInit {
   ngOnInit() {
     this.indiceDeMateria = this.tareasService.indexMateria;
     this.arregloTareas = this.tareasService.tareas;
-    console.log(this.indiceDeMateria);
     this.actualizarBarra();
   }
 
@@ -42,9 +42,12 @@ export class TareasPage implements OnInit {
 
     const resp = await modal.onWillDismiss();
 
-    this.tareasService.tareas.push(resp.data);
-    this.arregloTareas = this.tareasService.tareas;
-    console.log(this.arregloTareas);
+    if ( resp.data.colorTarea !== ' ' && resp.data.detalleTarea !== ' ' && resp.data.fechaTarea !== ' ' && resp.data.nombreTarea !== ' ' ) {
+      this.tareasService.tareas.push(resp.data);
+      this.arregloTareas = this.tareasService.tareas;
+    } else {
+      this.presentToast();
+    }
 
     this.actualizarBarra();
   }
@@ -70,10 +73,22 @@ export class TareasPage implements OnInit {
   }
   this.progreso = (terminadas/totalEnMateriaID); 
   this.porcentage = Math.round(this.progreso * 100);
+
+  if (isNaN(this.porcentage)) {
+    this.porcentage = this.porcentage || 0; 
+  }
  }  
 
  obtenerIndexTarea( i ) {
    this.tareasService.indexTarea = i;
+ }
+
+ async presentToast() {
+  const toast = await this.toastController.create({
+    message: 'Campos incompletos',
+    duration: 500
+  });
+  toast.present();
  }
 }
 

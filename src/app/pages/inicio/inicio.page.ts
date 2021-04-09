@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { AgregarMateriaPage } from '../agregar-materia/agregar-materia.page';
 import { TareasService } from '../../services/tareas.service';
 
@@ -11,7 +11,8 @@ import { TareasService } from '../../services/tareas.service';
 export class InicioPage implements OnInit {
 
   constructor( private modalController: ModalController,
-               private tareasService: TareasService) { }
+               private tareasService: TareasService,
+               private toastController: ToastController) { }
 
   progreso: number = 0;
   porcentage: number = 0;
@@ -33,12 +34,19 @@ export class InicioPage implements OnInit {
     await modal.present();
 
     const resp = await modal.onWillDismiss();
-    this.tareasService.obtenerMaterias().push(resp.data);
-    console.log(this.arregloMaterias);
+
+    if (resp.data.colorClase !== 'medium' && resp.data.nombreClase !== ' ') {
+      this.tareasService.obtenerMaterias().push(resp.data);
+    } else {
+      this.presentToast();
+    }
+
   }
 
   borrarMateria( indice ){
+    this.tareasService.borrarTareaService( indice );
     this.arregloMaterias.splice(indice,1);
+    this.arregloMaterias = this.tareasService.obtenerMaterias();
   }  
 
   obtenerIndex( i ) {
@@ -57,7 +65,20 @@ export class InicioPage implements OnInit {
     }
     this.progreso = (terminadas/this.tareasService.tareas.length); 
     this.porcentage = Math.round(this.progreso * 100);
-   }  
+
+    if (isNaN(this.porcentage)) {
+      this.porcentage = this.porcentage || 0; 
+    }
+
+  }  
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Campos incompletos',
+      duration: 500
+    });
+    toast.present();
+   }
 
 }
   

@@ -10,7 +10,7 @@ import { TareasService } from '../../services/tareas.service';
 export class AgregarMateriaPage implements OnInit {
 
   color: string = 'medium';
-  nombre: string = '';
+  nombre: string = ' ';
   
   @Input() nombreClase: string;
   @Input() colorClase: string;
@@ -28,11 +28,16 @@ export class AgregarMateriaPage implements OnInit {
   }
 
   cancelarMateria() {
-    this.modalController.dismiss();
+    this.modalController.dismiss({
+      nombreClase: ' ',
+      colorClase: ' '
+    });
   }
 
   colorSeleccionado( e ) {
-    this.color = e.detail.value;
+    if ( e.detail.value !== 'medium') {
+      this.color = e.detail.value;
+    }
   }
 
   nombreMateria( e ) {

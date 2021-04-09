@@ -12,12 +12,12 @@ import { TareasService } from '../../services/tareas.service';
 })
 export class AgregarTareaPage implements OnInit {
 
-  public photos: Photo[] =[]
+  public photos: Photo[] = [];
   
-  nombre: string = '';
-  fecha: string = '';
-  detalle: string ='';
-  color: string = '';
+  nombre: string = ' ';
+  fecha: string = ' ';
+  detalle: string =' ';
+  color: string = ' ';
   indiceDeMateria: number;
   
   @Input() materiaID: number;
@@ -47,7 +47,13 @@ export class AgregarTareaPage implements OnInit {
   }
 
   cancelartarea() {
-    this.modalController.dismiss();
+    this.modalController.dismiss({
+      materiaID: -1,
+      nombreTarea: ' ',
+      fechaTarea: ' ',
+      colorTarea: ' ',
+      detalleTarea: ' '
+    });
   }
 
   obtenerDetalleTarea( e ) {
