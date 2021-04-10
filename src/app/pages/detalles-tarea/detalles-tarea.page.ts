@@ -1,8 +1,7 @@
 import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit, Input } from '@angular/core';
 import { TareasService } from '../../services/tareas.service';
-import { PhotoService } from '../../services/photo.service';
-import { Photo } from 'src/app/models/photo.interface';
+import { Photo, PhotoService } from '../../services/photo.service';
 
 @Component({
   selector: 'app-detalles-tarea',
@@ -23,16 +22,12 @@ export class DetallesTareaPage implements OnInit {
   placeHolder: string;
 
   constructor( private tareasService: TareasService, 
-               private photoSvc: PhotoService) { 
-    this.photos = photoSvc.getPhotos();
-  }
+               private photoService: PhotoService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.indiceDeTarea = this.tareasService.indexTarea;
     this.indiceDeMateria = this.tareasService.indexMateria;
     this.arregloTareas = this.tareasService.tareas;
-    console.log(this.indiceDeTarea);
-    console.log(this.arregloTareas);
 
     switch(this.tareasService.tareas[this.indiceDeTarea].colorTarea) {
       case 'danger': this.placeHolder = 'Pendiente';
@@ -42,11 +37,12 @@ export class DetallesTareaPage implements OnInit {
       case 'success': this.placeHolder = 'Terminado';
                      break;           
     }
-    
+
+    await this.photoService.loadSaved();
+    this.photos = this.photoService.photos;
   }
 
   statusSeleccionado( event ) {
-    console.log(event);
     this.tareasService.tareas[this.indiceDeTarea].colorTarea = event.detail.value;
   }
 

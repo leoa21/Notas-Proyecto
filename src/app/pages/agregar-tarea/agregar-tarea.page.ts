@@ -1,8 +1,7 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Photo } from 'src/app/models/photo.interface';
-import { PhotoService } from 'src/app/services/photo.service';
+import { Photo, PhotoService } from 'src/app/services/photo.service';
 import { TareasService } from '../../services/tareas.service';
 
 @Component({
@@ -19,6 +18,7 @@ export class AgregarTareaPage implements OnInit {
   detalle: string =' ';
   color: string = ' ';
   indiceDeMateria: number;
+  tareas: object[];
   
   @Input() materiaID: number;
   @Input() nombreTarea: string;
@@ -27,13 +27,13 @@ export class AgregarTareaPage implements OnInit {
   @Input() colorTarea: string;
 
   constructor( private modalController: ModalController, 
-               private photoSvc: PhotoService, 
+               private photoService: PhotoService, 
                private tareasService: TareasService ) {
-   this.photos = photoSvc.getPhotos();
-   }
+  }
 
   ngOnInit() {
     this.indiceDeMateria = this.tareasService.indexMateria;
+    this.tareas = this.tareasService.tareas;
   }
 
   agregarTareaModal() {
@@ -64,8 +64,8 @@ export class AgregarTareaPage implements OnInit {
     this.nombre = e.detail.value;
   }
 
-  public newPhoto(): void{
-    this.photoSvc.addNewToGallery()
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
   }
 
   fechaSeleccionado( e ) {
@@ -75,6 +75,5 @@ export class AgregarTareaPage implements OnInit {
   statusSeleccionado ( e ) {
     this.color = e.detail.value;
   }
-
   
 }

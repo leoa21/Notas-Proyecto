@@ -55,7 +55,7 @@ export class InicioPage implements OnInit {
 
 
   actualizarBarra ( ) {
-    var terminadas: number = 0;
+    let terminadas: number = 0;
   
     for (var i=0 ; i < this.tareasService.tareas.length ; i++) {
       if(this.tareasService.tareas[i].colorTarea === 'success') {

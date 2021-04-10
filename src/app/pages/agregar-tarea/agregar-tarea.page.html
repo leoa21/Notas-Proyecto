@@ -13,7 +13,7 @@
 
   <ion-item (ionChange)="fechaSeleccionado( $event )">
     <ion-label class="texto-grande ion-text-center" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
-    <ion-datetime placeholder="SELECCIONAR" displayFormat="MMM DD, YYYY, HH:mm" display-timezone="utc"></ion-datetime>
+    <ion-datetime placeholder="SELECCIONAR" displayFormat="MMM DD, YYYY, HH:mm" display-timezone="utc" min="2021-01-01" max="2050-12-31"></ion-datetime>
   </ion-item>
 
   <ion-item>
@@ -34,19 +34,19 @@
     <ion-label class="ion-text-center texto-grande" color="medium">TOMAR FOTO</ion-label>
   </ion-item>
 
-  <ion-button (click)="newPhoto()" expand="block">
+  <ion-button (click)="addPhotoToGallery()" expand="block">
     <ion-icon name="camera" color="light"></ion-icon>
   </ion-button>
 
-  <ion-col *ngFor="let photo of photos; index as position">
-      <ion-img src="{{photo.webviewPath}}"></ion-img>
+  <ion-col size=6 *ngFor="let photo of photos; index as position">
+      <ion-img [src]="photo.webviewPath"></ion-img>
   </ion-col>
 
   <ion-item lines="none">
     <ion-label class="ion-text-center texto-grande" color="medium">SELECCIONAR FOTO</ion-label>
   </ion-item>
 
-  <ion-button (click)="fotoGaleria()" expand="block">
+  <ion-button disabled="true" (click)="fotoGaleria()" expand="block">
     <ion-icon name="image" color="light"></ion-icon>
   </ion-button>
   
