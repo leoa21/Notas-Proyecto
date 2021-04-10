@@ -11,7 +11,7 @@ import { TareasService } from '../../services/tareas.service';
 })
 export class AgregarTareaPage implements OnInit {
 
-  public photos: Photo[] = [];
+  //public photos: Photo[] = [];
   
   nombre: string = ' ';
   fecha: string = ' ';
@@ -19,6 +19,7 @@ export class AgregarTareaPage implements OnInit {
   color: string = ' ';
   indiceDeMateria: number;
   tareas: object[];
+  colorSeleccionado: string = 'medium';
   
   @Input() materiaID: number;
   @Input() nombreTarea: string;
@@ -66,6 +67,7 @@ export class AgregarTareaPage implements OnInit {
 
   addPhotoToGallery() {
     this.photoService.addNewToGallery();
+    //this.photos = this.photoService.photos;
   }
 
   fechaSeleccionado( e ) {
@@ -74,6 +76,7 @@ export class AgregarTareaPage implements OnInit {
 
   statusSeleccionado ( e ) {
     this.color = e.detail.value;
+    this.colorSeleccionado = e.detail.value;
   }
   
 }

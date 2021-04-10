@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'detalles-tarea',
     loadChildren: () => import('./pages/detalles-tarea/detalles-tarea.module').then( m => m.DetallesTareaPageModule)
   },
+  {
+    path: 'fotos',
+    loadChildren: () => import('./pages/fotos/fotos.module').then( m => m.FotosPageModule)
+  },
 
 
 

@@ -1,0 +1,20 @@
+<ion-content class="ion-padding">
+
+  <ion-title class="ion-text-center titulo" color="medium" disabled="true">FOTOS DE LAS TAREAS</ion-title>
+
+  <ion-item>
+    <ion-label></ion-label>
+  </ion-item>
+
+
+  <ion-col size="6" *ngFor="let photo of photos; index as position">
+    <ion-img [src]="photo.webviewPath"></ion-img>
+  </ion-col>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-button color="danger" (click)="dismiss()" expand="block">
+    REGRESAR
+  </ion-button>
+</ion-footer>

@@ -15,7 +15,7 @@
 
       <ion-item [routerLink]="['/detalles-tarea']" (click)="obtenerIndexTarea( i )">
         <ion-label class="texto-grande"><ion-icon slot="icon-only" name="caret-forward" color="{{tarea.colorTarea}}"></ion-icon> {{tarea.nombreTarea}}</ion-label>
-        <p><ion-icon class="texto-grande" color="medium" slot="icon-only" name="image"></ion-icon></p>
+        <!-- <p><ion-icon class="texto-grande" color="medium" slot="icon-only" name="image"></ion-icon></p> -->
       </ion-item>
 
       <ion-item-options side="end">
@@ -36,6 +36,12 @@
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button color="medium"  (click)="actualizarBarra()">
       <ion-icon color="light" name="refresh"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="center" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="verPhotos()">
+      <ion-icon color="light" name="images"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   

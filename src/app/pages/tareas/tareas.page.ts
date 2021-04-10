@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { AgregarTareaPage } from '../agregar-tarea/agregar-tarea.page';
 import { TareasService } from '../../services/tareas.service';
+import { FotosPage } from '../fotos/fotos.page';
 
 @Component({
   selector: 'app-tareas',
@@ -50,6 +51,14 @@ export class TareasPage implements OnInit {
     }
 
     this.actualizarBarra();
+  }
+
+  async verPhotos() {
+    const modal = await this.modalController.create({
+      component: FotosPage,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
   }
 
  borrarTarea( indice ){

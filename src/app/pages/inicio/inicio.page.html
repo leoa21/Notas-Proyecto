@@ -12,7 +12,7 @@
 
       <ion-item [routerLink]="['/inicio/tareas']" (click)="obtenerIndex( i )">
         <ion-label class="texto-grande"><ion-icon slot="icon-only" name="square" color="{{materia.colorClase}}"></ion-icon> {{materia.nombreClase}}</ion-label>
-        <p color="medium">0/0</p> 
+        <!-- <p color="medium">0/0</p>  -->
       </ion-item>
 
       <ion-item-options side="end">
@@ -38,10 +38,10 @@
 
 <ion-footer>
 
-      <ion-tab-button tab="tab1">
-        <ion-icon color="medium" name="home"></ion-icon>
-        <ion-label color="medium">INICIO</ion-label>
-      </ion-tab-button>
+  <ion-tab-button (click)="toggleTheme()">
+    <ion-icon color="medium" name="moon"></ion-icon>
+    <ion-label color="medium">CAMBIAR TEMA</ion-label>
+  </ion-tab-button>
 
 </ion-footer>
 

@@ -8,14 +8,14 @@
 
   <ion-item>
     <ion-label class="texto-grande ion-text-center" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
-    <ion-label displayFormat="MMM DD, YYYY, HH:mm">{{arregloTareas[indiceDeTarea].fechaTarea | date:'medium'}}</ion-label>
+    <ion-label displayFormat="MMM DD, YYYY, HH:mm">{{arregloTareas[indiceDeTarea].fechaTarea | date:'short'}}</ion-label>
   </ion-item>
 
   <ion-item>
     <ion-textarea class="ion-text-center" texto-grande>{{arregloTareas[indiceDeTarea].detalleTarea}}</ion-textarea>
   </ion-item>
 
-  <ion-item>
+  <ion-item lines="none">
     <ion-label color="medium">STATUS: </ion-label>
     <ion-select placeholder="{{placeHolder}}" cancelText="Cancelar" (ionChange)="statusSeleccionado( $event )" debounce="250">
       <ion-select-option value="danger">Pendiente</ion-select-option>
@@ -23,14 +23,18 @@
       <ion-select-option value="success">Terminado</ion-select-option>
     </ion-select>
   </ion-item>
-    
-  <ion-item lines="none">
-    <ion-label class="ion-text-center texto-grande" color="medium">FOTOS</ion-label>
-  </ion-item>
 
-  <ion-col *ngFor="let photo of photos; index as position">
+  <ion-item class="margen centrado" lines="none">
+    <ion-label class="icono-grande"><ion-icon color="{{ colorSeleccionado }}" slot="icon-only" name="caret-forward"></ion-icon></ion-label>
+  </ion-item>
+    
+  <!-- <ion-item lines="none">
+    <ion-label class="ion-text-center texto-grande" color="medium">FOTOS</ion-label>
+  </ion-item> -->
+
+  <!-- <ion-col size="6" *ngFor="let photo of photos; index as position">
       <ion-img [src]="photo.webviewPath"></ion-img>
-  </ion-col>
+  </ion-col> -->
   
 </ion-content>
     

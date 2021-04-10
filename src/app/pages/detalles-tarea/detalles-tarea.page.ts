@@ -13,8 +13,9 @@ export class DetallesTareaPage implements OnInit {
   indiceDeTarea: number
   indiceDeMateria: number;
   arregloTareas: Array<object>;
+  colorSeleccionado: string = 'medium';
 
-  public photos: Photo[] =[]
+  //public photos: Photo[] =[]
 
   progreso: number = 0;
   porcentage: number = 0;
@@ -38,12 +39,15 @@ export class DetallesTareaPage implements OnInit {
                      break;           
     }
 
+    this.colorSeleccionado = this.tareasService.tareas[this.indiceDeTarea].colorTarea;
+
     await this.photoService.loadSaved();
-    this.photos = this.photoService.photos;
+    //this.photos = this.photoService.photos;
   }
 
   statusSeleccionado( event ) {
     this.tareasService.tareas[this.indiceDeTarea].colorTarea = event.detail.value;
+    this.colorSeleccionado = this.tareasService.tareas[this.indiceDeTarea].colorTarea;
   }
 
 }

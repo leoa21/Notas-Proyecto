@@ -16,6 +16,7 @@ export class InicioPage implements OnInit {
 
   progreso: number = 0;
   porcentage: number = 0;
+  oscuro: boolean = false;
 
   arregloMaterias = this.tareasService.obtenerMaterias();
 
@@ -80,6 +81,14 @@ export class InicioPage implements OnInit {
     toast.present();
    }
 
+  toggleTheme() {
+    this.oscuro = !this.oscuro;
+    if(this.oscuro) {
+      document.body.setAttribute('color-theme','dark');
+    } else {
+      document.body.setAttribute('color-theme','light');
+    }
+  }
 }
   
 

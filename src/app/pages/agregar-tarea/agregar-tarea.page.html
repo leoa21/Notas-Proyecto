@@ -13,7 +13,7 @@
 
   <ion-item (ionChange)="fechaSeleccionado( $event )">
     <ion-label class="texto-grande ion-text-center" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
-    <ion-datetime placeholder="SELECCIONAR" displayFormat="MMM DD, YYYY, HH:mm" display-timezone="utc" min="2021-01-01" max="2050-12-31"></ion-datetime>
+    <ion-datetime placeholder="SELECCIONAR" displayFormat="MMM DD, YYYY, HH" display-timezone="utc" min="2021-01-01" max="2050-12-31"></ion-datetime>
   </ion-item>
 
   <ion-item>
@@ -21,7 +21,7 @@
       placeholder="DETALLE DE TAREA"></ion-textarea>
   </ion-item>
 
-  <ion-item>
+  <ion-item lines="none">
     <ion-label color="medium">SELECCIONAR STATUS</ion-label>
     <ion-select placeholder="" cancelText="Cancelar" (ionChange)="statusSeleccionado( $event )" debounce="250">
       <ion-select-option value="danger">Pendiente</ion-select-option>
@@ -29,26 +29,34 @@
       <ion-select-option value="success">Terminado</ion-select-option>
     </ion-select>
   </ion-item>
+
+  <ion-item class="margen centrado" lines="none">
+    <ion-label class="icono-grande"><ion-icon color="{{ colorSeleccionado }}" slot="icon-only" name="caret-forward"></ion-icon></ion-label>
+  </ion-item>
+
+  <ion-item class="">
+    <ion-label></ion-label>
+  </ion-item>
     
   <ion-item lines="none">
     <ion-label class="ion-text-center texto-grande" color="medium">TOMAR FOTO</ion-label>
   </ion-item>
 
-  <ion-button (click)="addPhotoToGallery()" expand="block">
-    <ion-icon name="camera" color="light"></ion-icon>
+  <ion-button (click)="addPhotoToGallery()" expand="block" size="large">
+    <ion-icon name="camera"></ion-icon>
   </ion-button>
 
-  <ion-col size=6 *ngFor="let photo of photos; index as position">
+  <!-- <ion-col size=6 *ngFor="let photo of photos; index as position">
       <ion-img [src]="photo.webviewPath"></ion-img>
-  </ion-col>
+  </ion-col> -->
 
-  <ion-item lines="none">
+  <!-- <ion-item lines="none">
     <ion-label class="ion-text-center texto-grande" color="medium">SELECCIONAR FOTO</ion-label>
   </ion-item>
 
   <ion-button disabled="true" (click)="fotoGaleria()" expand="block">
     <ion-icon name="image" color="light"></ion-icon>
-  </ion-button>
+  </ion-button> -->
   
 </ion-content>
     
