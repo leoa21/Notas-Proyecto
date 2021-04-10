@@ -1,14 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TareasService {
-
-  constructor() { }
-
-  indexMateria: number;
-  indexTarea: number;
+export class TareasService{
+  private _storage: Storage | null = null;
 
   materias: {
     nombreClase: string, 
@@ -22,6 +19,50 @@ export class TareasService {
     detalleTarea: string,
     colorTarea: string
   }[] = [];
+
+  constructor(private storage: Storage) {
+    this.init(); 
+  }
+
+  async init() {
+    // If using, define drivers here: await this.storage.defineDriver(/*...*/);
+    const storage = await this.storage.create();
+    this._storage = storage;
+  }
+
+  guardarMateria(materias, borrar) {
+    if (!borrar){
+      this.materias.push(materias);
+    }
+    this.storage.set('materias', this.materias);
+  }
+
+  async cargarMaterias() {
+    const materias = await this.storage.get('materias');
+    if (materias) {
+      this.materias = materias;
+    } 
+    
+  }
+
+  guardarTarea(tareas, borrar) {
+    if (!borrar){
+      this.tareas.push(tareas);
+    }
+    this.storage.set('tareas', this.tareas);
+  }
+
+  async cargarTareas() {
+    const tareas = await this.storage.get('tareas');
+    if (tareas) {
+      this.tareas = tareas;
+    } 
+  }
+
+
+  indexMateria: number;
+  indexTarea: number;
+
 
   obtenerMaterias( ) {
     return this.materias;
@@ -46,7 +87,10 @@ export class TareasService {
         this.tareas[i].materiaID = this.tareas[i].materiaID - 1;
       }
     }
-
+    var borrar = true;
+    this.guardarTarea(this.tareas, borrar);
+    var borrar = false;
   }
+  
 
 }

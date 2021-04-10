@@ -11,19 +11,22 @@ import { TareasService } from '../../services/tareas.service';
 export class InicioPage implements OnInit {
 
   constructor( private modalController: ModalController,
-               private tareasService: TareasService,
-               private toastController: ToastController) { }
+               public tareasService: TareasService,
+               private toastController: ToastController) {}
 
   progreso: number = 0;
   porcentage: number = 0;
   oscuro: boolean = false;
-
-  arregloMaterias = this.tareasService.obtenerMaterias();
+  arregloMaterias: { nombreClase: string; colorClase: string; }[] = [];
 
   ngOnInit() {
     this.actualizarBarra();
+    this.tareasService.cargarMaterias();
+    setTimeout(() => {
+      this.arregloMaterias = this.tareasService.materias;
+    }, 300);
   }
-  
+
   async agregarMateria() {
     const modal = await this.modalController.create({
       component: AgregarMateriaPage,
@@ -37,7 +40,7 @@ export class InicioPage implements OnInit {
     const resp = await modal.onWillDismiss();
 
     if (resp.data.colorClase !== 'medium' && resp.data.nombreClase !== ' ') {
-      this.tareasService.obtenerMaterias().push(resp.data);
+      this.tareasService.guardarMateria(resp.data, false);
     } else {
       this.presentToast();
     }
@@ -45,9 +48,12 @@ export class InicioPage implements OnInit {
   }
 
   borrarMateria( indice ){
+    var borrar = true;
     this.tareasService.borrarTareaService( indice );
     this.arregloMaterias.splice(indice,1);
+    this.tareasService.guardarMateria(this.arregloMaterias, borrar);
     this.arregloMaterias = this.tareasService.obtenerMaterias();
+    var borrar = false;
   }  
 
   obtenerIndex( i ) {

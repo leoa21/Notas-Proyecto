@@ -17,15 +17,19 @@ export class TareasPage implements OnInit {
 
   indiceDeMateria: number;
   arregloMaterias = this.tareasService.obtenerMaterias();
-  arregloTareas: Array<object>;
+  arregloTareas: { materiaID: number, nombreTarea: string,  fechaTarea: string, detalleTarea: string, colorTarea: string }[] = [];
 
   progreso: number = 0;
   porcentage: number = 0;
 
   ngOnInit() {
+    this.tareasService.cargarTareas();
     this.indiceDeMateria = this.tareasService.indexMateria;
     this.arregloTareas = this.tareasService.tareas;
     this.actualizarBarra();
+    setTimeout(() => {
+      this.arregloTareas = this.tareasService.tareas;
+    }, 300);
   }
 
   async agregarTarea() {
@@ -44,8 +48,7 @@ export class TareasPage implements OnInit {
     const resp = await modal.onWillDismiss();
 
     if ( resp.data.colorTarea !== ' ' && resp.data.detalleTarea !== ' ' && resp.data.fechaTarea !== ' ' && resp.data.nombreTarea !== ' ' ) {
-      this.tareasService.tareas.push(resp.data);
-      this.arregloTareas = this.tareasService.tareas;
+      this.tareasService.guardarTarea(resp.data, false);
     } else {
       this.presentToast();
     }
@@ -62,8 +65,11 @@ export class TareasPage implements OnInit {
   }
 
  borrarTarea( indice ){
-  //this.tareas.splice(indice,1);
+  var borrar = true;
   this.tareasService.tareas.splice(indice,1);
+  this.tareasService.guardarTarea(this.arregloTareas, borrar);
+  this.arregloTareas = this.tareasService.obtenerTareas();
+  var borrar = false;
  }
 
  // BARRA DE PROGRESO
