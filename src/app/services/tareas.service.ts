@@ -47,7 +47,6 @@ export class TareasService {
       }
     }
 
-    console.log(this.tareas);
   }
 
 }

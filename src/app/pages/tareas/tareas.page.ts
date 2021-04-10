@@ -55,7 +55,6 @@ export class TareasPage implements OnInit {
  borrarTarea( indice ){
   //this.tareas.splice(indice,1);
   this.tareasService.tareas.splice(indice,1);
-  console.log(this.tareasService.tareas);
  }
 
  // BARRA DE PROGRESO
