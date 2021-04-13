@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { AgregarMateriaPage } from '../agregar-materia/agregar-materia.page';
 import { TareasService } from '../../services/tareas.service';
+import { NoticiaPage } from '../noticia/noticia.page';
 
 @Component({
   selector: 'app-inicio',
@@ -44,7 +45,13 @@ export class InicioPage implements OnInit {
     } else {
       this.presentToast();
     }
+  }
 
+  async verNoticia() {
+    const modal = await this.modalController.create({
+      component: NoticiaPage
+    });
+    return await modal.present();
   }
 
   borrarMateria( indice ){
