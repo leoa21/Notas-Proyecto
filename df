@@ -1,0 +1,71 @@
+[33mcommit 4544572969246503d4c8fcbe0cfbb7bf74e43030[m[33m ([m[1;36mHEAD -> [m[1;32mprueba[m[33m, [m[1;31morigin/prueba[m[33m)[m
+Author: Brayan Rivera <brayan.israel99@gmail.com>
+Date:   Sat Apr 10 05:20:31 2021 -0500
+
+    Se implemento el storage. Practicamente esta completa la base de la app
+
+[33mcommit 8bf53a57552b6e97b1ccbf56077477a5f94c1459[m
+Author: Brayan Rivera <brayan.israel99@gmail.com>
+Date:   Sat Apr 10 03:37:20 2021 -0500
+
+    Se implemento guardar fotos para web y mobiles, se agrego boton para tema oscuro y pagina exlusiva para fotos. Tambien se toco un poco la interfaz
+
+[33mcommit 0b1455752a698d8a4ef67150e304d13cee08d350[m
+Author: Brayan Rivera <brayan.israel99@gmail.com>
+Date:   Sat Apr 10 00:58:11 2021 -0500
+
+    Version antes de modificar pagina de fotos
+
+[33mcommit 948591f6477611c5980d4dd985815cb81b952ab0[m[33m ([m[1;31morigin/Dev[m[33m, [m[1;32mDev[m[33m)[m
+Author: Brayan Rivera <brayan.israel99@gmail.com>
+Date:   Sat Apr 10 00:44:41 2021 -0500
+
+    Se implemento tomar, guardar y cargar fotos
+
+[33mcommit eb01eaa12ce70f158ee3e518dc9d33dc8bf61e5c[m
+Author: Brayan Rivera <brayan.israel99@gmail.com>
+Date:   Fri Apr 9 18:04:47 2021 -0500
+
+    Se arreglaron problemas con los arreglos al momento de borrar materias o tareas, se implementaron validaciones para los campos ingresados, se arreglaron un par de bugs en la interfaz
+
+[33mcommit 01537fa859bb40beba8dd59652d6ddb016fe1a67[m
+Author: Brayan Rivera <brayan.israel99@gmail.com>
+Date:   Wed Apr 7 06:38:53 2021 -0500
+
+    Nuevo tareas service, pagina detalles, cada materia tienes su arrego de tareas, boton de refresh
+
+[33mcommit 726c12b548776cd50e85342dad6141deeeb1ade0[m
+Author: Brayan Rivera <brayan.israel99@gmail.com>
+Date:   Sat Apr 3 20:52:18 2021 -0600
+
+    Se implemento boton status, se toco la intefaz, barra de progreso en tareas
+
+[33mcommit 25e388c04afe280806ae102a26160049444e8d7c[m
+Author: Luis Lopez Martinez <ray_mp90@hotmail.com>
+Date:   Sat Apr 3 16:38:18 2021 -0600
+
+    Se añadieron campos al agregar tarea y se implemento la camara
+
+[33mcommit 2c9a8061f6478be875988fbc231fa980fb38e3e0[m
+Author: Luis Lopez Martinez <ray_mp90@hotmail.com>
+Date:   Sat Apr 3 04:43:42 2021 -0600
+
+    Se añadio pantalla de tareas y funcion del boton inicio
+
+[33mcommit 94c5a6c224fd37344bd24f79185486c8e8e08248[m
+Author: Luis Lopez Martinez <ray_mp90@hotmail.com>
+Date:   Sat Apr 3 04:24:52 2021 -0600
+
+    Se añadio la pantalla tareas y agregar una tarea
+
+[33mcommit 61611888efad58f6f2baabf8b7c8a485a05a54c0[m
+Author: Brayan Rivera <brayan.israel99@gmail.com>
+Date:   Fri Apr 2 23:00:20 2021 -0600
+
+    Se agrego pagina inicio, agregar clase y CSS
+
+[33mcommit a891e73e99543f0bd22f3df655d0431df09560cd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Leonardo Alvarez <leo.21.alvarez@hotmail.com>
+Date:   Sun Mar 28 13:17:45 2021 -0600
+
+    Initial commit
