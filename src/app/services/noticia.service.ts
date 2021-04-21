@@ -6,12 +6,17 @@ import { Injectable } from '@angular/core';
 })
 export class NoticiaService {
 
+  // Inyeccion de dependencias
   constructor( private http: HttpClient ) { }
 
+  // Funcion encargada de hacer la peticion a la API de noticias
   getNoticia() {
     return this.http.get<RespuestaTopNoticia>(`https://newsapi.org/v2/top-headlines?country=mx&apiKey=e97189003c5841a085939b61ca33904e`);
   }
+  
 }
+
+// Interfaces que usaremos para la creacion de las noticias 
 
 export interface RespuestaTopNoticia{
   status: string;

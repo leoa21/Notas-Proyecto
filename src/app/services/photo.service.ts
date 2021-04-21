@@ -8,15 +8,17 @@ const {Camera, FileSystem, Storage} = Plugins;
   providedIn: 'root'
 })
 export class PhotoService {
-
+  // Declaracion de variables que necesitaremos
   public photos: Photo[] = [];
   private PHOTO_STORAGE: string = "photos";
   private platform: Platform;
   
-  constructor(platform: Platform) {
+  // Inyeccion de dependencias
+  constructor( platform: Platform ) {
     this.platform = platform;
   }
 
+  /********** Instrucciones indicadas por la documentacion de IONIC para la creacion de este servicio **********/
   public async addNewToGallery(){
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
@@ -95,9 +97,11 @@ export class PhotoService {
       }
     }
   }
+  /********** Instrucciones indicadas por la documentacion de IONIC para la creacion de este servicio **********/
 
 }
 
+//Interfaz para el arreglo de fotos
 export interface Photo{
   filepath: string;
   webviewPath: string;

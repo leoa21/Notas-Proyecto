@@ -1,20 +1,28 @@
 <ion-content>
 
   <ion-item-group class="header-progreso">
-    <ion-title class="ion-text-center" color="light">PROGRESO DE TAREAS:<ion-label color="success">{{porcentage}}%</ion-label></ion-title>
+    <!-- Titulo de la pagina y muestra el procentage de todas las tareas completadas/totales -->
+    <ion-title class="ion-text-center" color="light">PROGRESO DE TAREAS<ion-label color="success">{{porcentage}}%</ion-label></ion-title>
+    <!-- Barra que mostrara de manera visual el procentage de tareas completadas -->
     <ion-progress-bar color="success" [value]="progreso"></ion-progress-bar>
   </ion-item-group>
 
+  <!-- Subtitulo de la pagina -->
   <ion-title class="ion-text-center titulo" color="medium" disabled="true">MATERIAS DISPONIBLES</ion-title>
 
+  <!-- Lista de todas las materias disponibles -->
   <ion-list>
+    <!-- Para cada materia se aplicara el item-sliding para poder borrar cada materia junto a sus respectivas tareas -->
+    <!-- Se recorre el arreglo de materias -->
     <ion-item-sliding *ngFor="let materia of arregloMaterias;let i = index" >
 
+      <!-- Al dar click a una materia se dirige a la pagina de tarea respectiva  -->
       <ion-item [routerLink]="['/inicio/tareas']" (click)="obtenerIndex( i )">
+        <!-- Se muestra el nombre de la materia ademas de una figura cuadrada del color seleccionado con anterioridad -->
         <ion-label class="texto-grande"><ion-icon slot="icon-only" name="square" color="{{materia.colorClase}}"></ion-icon> {{materia.nombreClase}}</ion-label>
-        <!-- <p color="medium">0/0</p>  -->
       </ion-item>
 
+      <!-- Boton que nos permite borrar la materia seleccionada  -->
       <ion-item-options side="end">
         <ion-item-option (click)="borrarMateria( i )" color="danger"><ion-icon color="light" slot="icon-only" name="trash-outline"></ion-icon></ion-item-option>
       </ion-item-options>
@@ -22,18 +30,21 @@
     </ion-item-sliding>
   </ion-list>
 
+  <!-- Boton flotante que tiene como funcion agregar nuevas materias -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="agregarMateria()">
       <ion-icon color="light" name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
+  <!-- Boton flotante que tiene como funcion actualizar la barra de progreso que se encuentra arriba de la pagina -->
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button color="medium"  (click)="actualizarBarra()">
       <ion-icon color="light" name="refresh"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
+  <!-- Boton flotante que tiene como funcino enviarnos a una pagina donde muestre las 3 noticias del dia -->
   <ion-fab vertical="center" horizontal="end" slot="fixed">
     <ion-fab-button (click)="verNoticia()">
       <ion-icon color="light" name="planet"></ion-icon>
@@ -42,12 +53,12 @@
   
 </ion-content>
 
+<!-- Footer de la aplicacion para cambiar el tema de la aplicacion de brillante a oscuro o viceversa -->
 <ion-footer>
-
+  <!-- Este metodo se necarga de cambiar el tema -->
   <ion-tab-button (click)="toggleTheme()">
     <ion-icon color="medium" name="moon"></ion-icon>
     <ion-label color="medium">CAMBIAR TEMA</ion-label>
   </ion-tab-button>
-
 </ion-footer>
 

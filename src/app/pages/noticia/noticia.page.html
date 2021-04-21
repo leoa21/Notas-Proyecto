@@ -1,23 +1,29 @@
 <ion-content class="ion-padding">
 
+  <!-- Titulo de la pagina -->
   <ion-title class="ion-text-center titulo" color="medium" disabled="true">NOTICIAS DEL DIA</ion-title>
 
   <ion-item>
     <ion-label></ion-label>
   </ion-item>
 
-
+  <!-- Secciona que mostrara casa noticia -->
   <ion-grid fixed>
     <ion-row>
+      <!-- Recorre el arreglo de noticias -->
       <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12" *ngFor="let noticia of noticias; let i = index">
         <ion-card>
           <ion-card-header>
+            <!-- Muestra el titulo -->
             <ion-card-title>{{noticia.title}}</ion-card-title>
+            <!-- Nombre de el noticiero -->
             <ion-card-subtitle>{{noticia.source.name}}</ion-card-subtitle>
           </ion-card-header>
+          <!-- Imagen de la noticia (si existe) -->
           <ion-img [src]="noticia.urlToImage"></ion-img>
           <ion-card-content>
             <p>
+              <!-- Descripcion de la noticia -->
               {{noticia.description}}
             </p>
           </ion-card-content>
@@ -28,6 +34,7 @@
 
 </ion-content>
 
+<!-- Footer de la aplicacion para regresar a la pagina anterior -->
 <ion-footer class="ion-no-border">
   <ion-button color="danger" (click)="dismiss()" expand="block">
     REGRESAR
