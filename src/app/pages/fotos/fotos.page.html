@@ -8,15 +8,17 @@
   </ion-item>
 
   <!-- Arreglo de imagenes que mostraran las fotos tomadas -->
-  <ion-col size="6" *ngFor="let photo of photos; index as position">
-    <ion-img [src]="photo.webviewPath"></ion-img>
+  <ion-col size="6" *ngFor="let photo of photoService.photos; index as position">
+    <ion-img [src]="photo.webviewPath" (click)="showActionSheet(photo, position)"></ion-img>
   </ion-col>
 
 </ion-content>
 
 <!-- Footer de la aplicacion para regresar a la pagina anterior -->
 <ion-footer class="ion-no-border">
-  <ion-button color="danger" (click)="dismiss()" expand="block">
-    REGRESAR
-  </ion-button>
+  <ion-toolbar>
+    <ion-button color="danger" (click)="dismiss()" expand="block">
+      REGRESAR
+    </ion-button>
+  </ion-toolbar>
 </ion-footer>

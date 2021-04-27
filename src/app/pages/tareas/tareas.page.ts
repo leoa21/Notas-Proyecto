@@ -14,6 +14,7 @@ q// Declaracion de las variables que necesitaremos
   indiceDeMateria: number;
   progreso: number = 0;
   porcentage: number = 0;
+  nombreClase: string = '';
   arregloMaterias = this.tareasService.obtenerMaterias();
   arregloTareas: { materiaID: number, nombreTarea: string,  fechaTarea: string, detalleTarea: string, colorTarea: string }[] = [];
 
@@ -32,6 +33,7 @@ q// Declaracion de las variables que necesitaremos
     setTimeout(() => {
       this.arregloTareas = this.tareasService.tareas;
     }, 100);
+    this.nombreClase = this.arregloMaterias[this.indiceDeMateria].nombreClase.toUpperCase();
   }
 
   // Se llama a un modal donde recibira las variables indicadas. 

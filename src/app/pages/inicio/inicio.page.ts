@@ -24,8 +24,8 @@ export class InicioPage implements OnInit {
 
   // Al cargar la pagina se actualizara la barra de progreso y se cargara todas las materias que esten en la memoria
   ngOnInit() {
-    this.actualizarBarra();
     this.tareasService.cargarMaterias();
+    this.actualizarBarra();
     // Se agrego un pequeño setTimeout() ya que si no se agrega puede tener problemas al cargar las materias
     setTimeout(() => {
       this.arregloMaterias = this.tareasService.materias;
@@ -84,7 +84,7 @@ export class InicioPage implements OnInit {
   }
 
   // Metodo para actualizar la barra de progreso
-  actualizarBarra ( ) {
+  actualizarBarra() {
     // Variable que contara todas las tareas terminadas 
     let terminadas: number = 0;
   

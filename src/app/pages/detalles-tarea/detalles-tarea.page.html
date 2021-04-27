@@ -11,7 +11,7 @@
   <!-- Muesta la fecha de la tarea seleccionada -->
   <ion-item>
     <ion-label class="texto-grande ion-text-center" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
-    <ion-label displayFormat="MMM DD, YYYY, HH:mm">{{arregloTareas[indiceDeTarea].fechaTarea | date:'short'}}</ion-label>
+    <ion-label displayFormat="MMM DD, YYYY, HH:mm">{{arregloTareas[indiceDeTarea].fechaTarea | date}}</ion-label>
   </ion-item>
 
   <!-- Muesta los detalles de la tarea seleccionada -->
@@ -39,7 +39,9 @@
 
 <!-- Footer de la aplicacion para regresar a la pagina anterior -->
 <ion-footer class="ion-no-border">
-  <ion-button [routerLink]="['/inicio/tareas']" color="primary" expand="block">
-    ACEPTAR
-  </ion-button>
+  <ion-toolbar>
+    <ion-button [routerLink]="['/inicio/tareas']" color="primary" expand="block">
+      ACEPTAR
+    </ion-button>
+  </ion-toolbar>
 </ion-footer>

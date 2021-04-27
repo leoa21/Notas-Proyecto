@@ -9,7 +9,7 @@
   </ion-item-group>
 
   <!-- Subtitulo de la pagina -->
-  <ion-title class="ion-text-center titulo" color="medium" disabled="true">TAREAS DISPONIBLES</ion-title>
+  <ion-title class="ion-text-center titulo" color="medium" disabled="true">{{nombreClase}}</ion-title>
 
   <!-- Lista de todas las tareas disponibles -->
   <ion-list>
@@ -44,20 +44,21 @@
       <ion-icon color="light" name="refresh"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <!-- Boton flotante que tiene como funcion ver todas las fotos tomadas -->
-  <ion-fab vertical="center" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="verPhotos()">
-      <ion-icon color="light" name="images"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
   
 </ion-content>
 
-<!-- Footer de la aplicacion para regresar a la pagina de inicio -->
+<!-- Footer de la aplicacion para regresar a la pagina de inicio o ver fotos -->
 <ion-footer>
-      <ion-tab-button tab="tab1" [routerLink]="['/']">
-        <ion-icon color="medium" name="home"></ion-icon>
-        <ion-label color="medium">INICIO</ion-label>
-      </ion-tab-button>
+  <ion-toolbar>
+    <!-- Este metodo se encarga de cargar las fotos -->
+    <ion-tab-button slot="start" (click)="verPhotos()">
+      <ion-icon color="medium" name="images"></ion-icon>
+      <ion-label color="medium">FOTOS</ion-label>
+    </ion-tab-button>
+    <!-- Este metodo se encarga de regresar a la pagina principal -->
+    <ion-tab-button slot="end" tab="tab1" [routerLink]="['/']">
+      <ion-icon color="medium" name="home"></ion-icon>
+      <ion-label color="medium">INICIO</ion-label>
+    </ion-tab-button>
+  </ion-toolbar>  
 </ion-footer>
