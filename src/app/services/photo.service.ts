@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Plugins, CameraResultType, Capacitor, FilesystemDirectory, CameraPhoto, CameraSource, Filesystem} from '@capacitor/core';
+import {Plugins, CameraResultType, Capacitor, FilesystemDirectory, CameraPhoto, CameraSource} from '@capacitor/core';
 import { Platform } from '@ionic/angular';
 
-const {Camera, FileSystem, Storage} = Plugins;
+const {Camera, Filesystem, Storage} = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -67,7 +67,7 @@ export class PhotoService {
       return file.data;
     }
     else {
-      const response = await fetch(cameraPhoto.webPath);
+      const response = await fetch(cameraPhoto.webPath);// webPath!
       const blob = await response.blob();
 
       return await this.convertBlobToBase64(blob) as string;
