@@ -24,7 +24,7 @@ export class NoticiaPage implements OnInit {
       // Usa el metodo de noticiasService para cargar las noticias
       this.noticiasService.getNoticia().subscribe(resp =>{
         // Guarda las noticias a una arreglo local
-        this.noticias.push(resp.articles[0],resp.articles[1],resp.articles[2],);
+        this.noticias.push(resp.articles[0],resp.articles[1],resp.articles[2],resp.articles[3],resp.articles[4]);
       });
       // Cambia el valor de la variable bandera ya que no queremos que haga la peticion al api cada vez que entre a la pagina.
       // Como ya guardamos las noticias del dia de hoy no es necesario volver a llamar la peticion.

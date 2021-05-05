@@ -73,29 +73,28 @@ export class InicioPage implements OnInit {
       buttons: [
         {
           //Boton de alerta para cancelar la eliminacion de la materia
-        text: 'Cancelar',
-        role: 'cancel'
-      },
-      {
-        //Boton de alerta para confirmar la eliminacion de la materia
-        text: 'Eliminar',
-        handler: () => {
-      // Variable bandera para una metodo
-    var borrar = true;
-    // Se modifica el arreglo de meterias para ajustar el arreglo a los nuevos cambios
-    this.arregloMaterias.splice(indice,1);
-    // Se guarda el nuevo arreglo de materias a la memoria
-    this.tareasService.guardarMateria(this.arregloMaterias, borrar);
-    // Carga el nuevo arreglo y lo asigna al arreglo de materias local
-    this.arregloMaterias = this.tareasService.obtenerMaterias();
-    var borrar = false;
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          //Boton de alerta para confirmar la eliminacion de la materia
+          text: 'Eliminar',
+          handler: () => {
+            // Variable bandera para una metodo
+            var borrar = true;
+            // Se modifica el arreglo de meterias para ajustar el arreglo a los nuevos cambios
+            this.arregloMaterias.splice(indice,1);
+            // Se guarda el nuevo arreglo de materias a la memoria
+            this.tareasService.guardarMateria(this.arregloMaterias, borrar);
+            // Carga el nuevo arreglo y lo asigna al arreglo de materias local
+            this.arregloMaterias = this.tareasService.obtenerMaterias();
+            var borrar = false;
+          }
         }
-      }
-     ]
- 
+      ]
     });
-   await alertElement.present();
-   }
+    await alertElement.present();
+  }
   
 
   // Obtiene el indice de la materia seleccionada 

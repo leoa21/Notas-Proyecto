@@ -72,3 +72,10 @@ p {
 .textoBlanco {
     color: white !important;
 }
+
+.header-progreso{
+    padding-bottom: 7px !important;
+    -webkit-box-shadow: inset 0px -157px 36px -175px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px -157px 36px -175px rgba(0,0,0,0.75);
+    box-shadow: inset 0px -157px 36px -175px rgba(0,0,0,0.75);
+}

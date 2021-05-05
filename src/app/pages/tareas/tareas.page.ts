@@ -75,36 +75,35 @@ q// Declaracion de las variables que necesitaremos
   }
 
   // Fucion para borrar la tarea y se envia en indice de la tarea seleccionada
- async  borrarTarea( indice ){
-   //Se crea una alerta para confirmar si se desea borrar una tarea
-  const alertElement = await this.alertCtrl.create({
-     header: '¿Esta seguro de eliminar esta tarea?',
-     message: '¡Cuidado! Esto eliminara la tarea definitivamente',
-     buttons: [
-       {
-         //Boton de alerta para cancelar la eliminacion de la tarea
-       text: 'Cancelar',
-       role: 'cancel'
-     },
-     {
-       //Boton de alerta para la confirmacion de la eliminacion de la tarea
-       text: 'Eliminar',
-       handler: () => {
-          // Variable bandera para una metodo
-    var borrar = true;
-    // Se modifica el arreglo de tareas de tareasService para borrar la tarea indicada
-    this.tareasService.tareas.splice(indice,1);
-    // Se guarda el nuevo arreglo de atareas a la memoria
-    this.tareasService.guardarTarea(this.arregloTareas, borrar);
-    // Se guarrda el arreglo de tareas a un arreglo local
-    this.arregloTareas = this.tareasService.obtenerTareas();
-    var borrar = false;
-       }
-     }
-    ]
-
-   });
-  await alertElement.present();
+  async borrarTarea( indice ){
+    //Se crea una alerta para confirmar si se desea borrar una tarea
+    const alertElement = await this.alertCtrl.create({
+      header: '¿Esta seguro de eliminar esta tarea?',
+      message: '¡Cuidado! Esto eliminara la tarea definitivamente',
+      buttons: [
+        {
+          //Boton de alerta para cancelar la eliminacion de la tarea
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          //Boton de alerta para la confirmacion de la eliminacion de la tarea
+          text: 'Eliminar',
+          handler: () => {
+            // Variable bandera para una metodo
+            var borrar = true;
+            // Se modifica el arreglo de tareas de tareasService para borrar la tarea indicada
+            this.tareasService.tareas.splice(indice,1);
+            // Se guarda el nuevo arreglo de atareas a la memoria
+            this.tareasService.guardarTarea(this.arregloTareas, borrar);
+            // Se guarrda el arreglo de tareas a un arreglo local
+            this.arregloTareas = this.tareasService.obtenerTareas();
+            var borrar = false;
+          }
+        }
+      ]
+    });
+    await alertElement.present();
   }
 
   // Metodo para actualizar la barra de progreso

@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+
+const apiKey = environment.apiKey;
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,7 @@ export class NoticiaService {
 
   // Funcion encargada de hacer la peticion a la API de noticias
   getNoticia() {
-    return this.http.get<RespuestaTopNoticia>(`https://newsapi.org/v2/top-headlines?country=mx&apiKey=e97189003c5841a085939b61ca33904e`);
+    return this.http.get<RespuestaTopNoticia>(`https://newsapi.org/v2/top-headlines?country=mx&apiKey=${apiKey}`);
   }
   
 }

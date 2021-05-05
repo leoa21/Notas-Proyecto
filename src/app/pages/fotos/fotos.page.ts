@@ -33,7 +33,6 @@ export class FotosPage implements OnInit {
 
   public async showActionSheet(photo: Photo, position: number) {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Fotos',
       buttons: [{
         text: 'Borrar',
         role: 'destructive',
