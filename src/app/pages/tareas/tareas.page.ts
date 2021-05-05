@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController, ToastController } from '@ionic/angular';
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { AgregarTareaPage } from '../agregar-tarea/agregar-tarea.page';
 import { TareasService } from '../../services/tareas.service';
 import { FotosPage } from '../fotos/fotos.page';
@@ -21,7 +21,8 @@ q// Declaracion de las variables que necesitaremos
   // Inyeccion de dependencias
   constructor( private modalController: ModalController,
                private tareasService: TareasService,
-               private toastController: ToastController) 
+               private toastController: ToastController,
+               private alertCtrl: AlertController) 
   {}
 
   // Al cargar la pagina se cargaran las tareas, se obtendra le indice de la materia en la que nos encontramos, se creara un arreglo locar y
@@ -74,8 +75,22 @@ q// Declaracion de las variables que necesitaremos
   }
 
   // Fucion para borrar la tarea y se envia en indice de la tarea seleccionada
-  borrarTarea( indice ){
-    // Variable bandera para una metodo
+ async  borrarTarea( indice ){
+   //Se crea una alerta para confirmar si se desea borrar una tarea
+  const alertElement = await this.alertCtrl.create({
+     header: '¿Esta seguro de eliminar esta tarea?',
+     message: '¡Cuidado! Esto eliminara la tarea definitivamente',
+     buttons: [
+       {
+         //Boton de alerta para cancelar la eliminacion de la tarea
+       text: 'Cancelar',
+       role: 'cancel'
+     },
+     {
+       //Boton de alerta para la confirmacion de la eliminacion de la tarea
+       text: 'Eliminar',
+       handler: () => {
+          // Variable bandera para una metodo
     var borrar = true;
     // Se modifica el arreglo de tareas de tareasService para borrar la tarea indicada
     this.tareasService.tareas.splice(indice,1);
@@ -84,6 +99,12 @@ q// Declaracion de las variables que necesitaremos
     // Se guarrda el arreglo de tareas a un arreglo local
     this.arregloTareas = this.tareasService.obtenerTareas();
     var borrar = false;
+       }
+     }
+    ]
+
+   });
+  await alertElement.present();
   }
 
   // Metodo para actualizar la barra de progreso

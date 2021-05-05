@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
@@ -26,7 +27,7 @@ export class TareasService{
   indexTarea: number;
 
   // Inyeccion de dependencias
-  constructor( private storage: Storage ) {
+  constructor( private storage: Storage, private alertCtrl: AlertController ) {
     this.init(); 
   }
 
@@ -78,8 +79,22 @@ export class TareasService{
   }
 
   // Funcion que se encarga de borrar las tareas y recibe como parametro el indice de la materia
-  borrarTareaService( index:number ) {
-    // Checa todo el arreglo de tareas 
+  async borrarTareaService( index:number ) {
+      //Se crea una alerta para confirmar si se desea eliminar una tarea
+      const alertElement = await this.alertCtrl.create({
+        header: '¿Desea eliminar esta tarea?',
+        message: '¡Cuidado! Se eliminara definitivamente la tarea',
+        buttons: [{
+        //Boton de alerta para cancelar la eliminacion de la tarea
+
+          text: 'Canelar',
+          role: 'cancel'
+        },
+        {
+        //Boton de alerta para la confirmacion de la eliminacion de la tarea
+          text: 'Eliminar',
+          handler: () => {
+            // Checa todo el arreglo de tareas 
     for (let i = 0; i < this.tareas.length; i++) {
       // Si el indice de materia de una tarea es igual al indice de materia que se recibio como paremetro, se borra.
       if (index === this.tareas[i].materiaID) {
@@ -103,6 +118,13 @@ export class TareasService{
     var borrar = true;
     this.guardarTarea(this.tareas, borrar);
     var borrar = false;
-  }
   
-}
+  
+          }
+        }
+        ]
+      });
+      await alertElement.present();
+
+    }
+    }

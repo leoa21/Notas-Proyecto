@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, ToastController } from '@ionic/angular';
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { AgregarMateriaPage } from '../agregar-materia/agregar-materia.page';
 import { TareasService } from '../../services/tareas.service';
 import { NoticiaPage } from '../noticia/noticia.page';
@@ -19,7 +19,8 @@ export class InicioPage implements OnInit {
   // Inyeccion de dependencias
   constructor( private modalController: ModalController,
                public tareasService: TareasService,
-               private toastController: ToastController) 
+               private toastController: ToastController,
+               private alertCtrl: AlertController) 
   {}
 
   // Al cargar la pagina se actualizara la barra de progreso y se cargara todas las materias que esten en la memoria
@@ -64,11 +65,23 @@ export class InicioPage implements OnInit {
   }
 
   // Este metodo recibe como parametro el indice de la materia para borrara del arreglo
-  borrarMateria( indice ){
-    // Variable bandera para una metodo
+  async borrarMateria( indice ){
+    //Se crea una alerta para confirmar si se desea eliminar una materia
+    const alertElement = await this.alertCtrl.create({
+      header: '¿Esta seguro de eliminar esta materia?',
+      message: '¡Cuidado! Esto eliminara la materia definitivamente',
+      buttons: [
+        {
+          //Boton de alerta para cancelar la eliminacion de la materia
+        text: 'Cancelar',
+        role: 'cancel'
+      },
+      {
+        //Boton de alerta para confirmar la eliminacion de la materia
+        text: 'Eliminar',
+        handler: () => {
+      // Variable bandera para una metodo
     var borrar = true;
-    // Se llama al metodo para borrar tareas del servicio y se envia el indice de la materia como parametro
-    this.tareasService.borrarTareaService( indice );
     // Se modifica el arreglo de meterias para ajustar el arreglo a los nuevos cambios
     this.arregloMaterias.splice(indice,1);
     // Se guarda el nuevo arreglo de materias a la memoria
@@ -76,7 +89,14 @@ export class InicioPage implements OnInit {
     // Carga el nuevo arreglo y lo asigna al arreglo de materias local
     this.arregloMaterias = this.tareasService.obtenerMaterias();
     var borrar = false;
-  }  
+        }
+      }
+     ]
+ 
+    });
+   await alertElement.present();
+   }
+  
 
   // Obtiene el indice de la materia seleccionada 
   obtenerIndex( i ) {
