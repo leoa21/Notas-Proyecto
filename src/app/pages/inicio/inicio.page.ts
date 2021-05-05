@@ -66,7 +66,7 @@ export class InicioPage implements OnInit {
 
   // Este metodo recibe como parametro el indice de la materia para borrara del arreglo
   async borrarMateria( indice ){
-    //Se crea una alerta para confirmar si se desea eliminar una materia
+    //Se crea una alerta para confirmar si se desea eliminar una materia.
     const alertElement = await this.alertCtrl.create({
       header: '¿Esta seguro de eliminar esta materia?',
       message: '¡Cuidado! Esto eliminara la materia definitivamente',
