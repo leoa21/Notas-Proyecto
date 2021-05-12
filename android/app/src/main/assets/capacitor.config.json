@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "Notas-Proyecto",
+  "appName": "Agenda de Tareas",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
