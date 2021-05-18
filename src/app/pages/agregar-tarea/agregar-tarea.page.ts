@@ -1,6 +1,7 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Photo, PhotoService } from 'src/app/services/photo.service';
 import { TareasService } from '../../services/tareas.service';
 
@@ -18,6 +19,11 @@ export class AgregarTareaPage implements OnInit {
   indiceDeMateria: number;
   tareas: object[];
   colorSeleccionado: string = 'medium';
+
+  isDisabled: boolean;
+
+  //Variable para el formulario
+  datosForm: FormGroup;
   
   // Variables que se agregaron gracias al modal de la pagina padre
   @Input() materiaID: number;
@@ -29,13 +35,27 @@ export class AgregarTareaPage implements OnInit {
   // Inyeccion de dependencias
   constructor( private modalController: ModalController, 
                private photoService: PhotoService, 
-               private tareasService: TareasService ) {
+               private tareasService: TareasService,
+               private formBuilder: FormBuilder,
+               private toastController: ToastController ) {
+    this.datosForm = this.formBuilder.group({
+      // Aqui se checan que los caracteres introducidos sean validos para el formulario
+      nombreDeTarea: new FormControl("", Validators.compose([
+        Validators.required,
+        Validators.pattern("^[a-zA-Z0-9 ]{1,25}$")
+      ])),
+      detalleDeTarea: new FormControl("", Validators.compose([
+        Validators.required,
+        Validators.pattern("^[a-zA-Z0-9 ]{1,100}$")
+      ]))
+    })
   }
 
   // Obtiene el indice de la materia ademas de las tareas y las guarda en variables al momento de cargar la pagina
   ngOnInit() {
     this.indiceDeMateria = this.tareasService.indexMateria;
     this.tareas = this.tareasService.tareas;
+    this.isDisabled = true;
   }
 
   // Regresa los valores para el modal de la pagina padre
@@ -84,6 +104,30 @@ export class AgregarTareaPage implements OnInit {
   statusSeleccionado ( e ) {
     this.color = e.detail.value;
     this.colorSeleccionado = e.detail.value;
+  }
+
+  // Se checa el status del formulario para habilitar o deshabilitar el boton de aceptar
+  validar(){
+    if(this.datosForm.value.detalleDeTarea != '' && this.datosForm.value.nombreDeTarea != ''){
+      if(this.datosForm.status == 'VALID'){
+        this.isDisabled = false;
+      } else {
+        if(this.datosForm.status == 'INVALID'){
+          this.isDisabled = true;
+          this.presentToast();
+        }
+      }
+    }
+  }
+
+  //Funcion para presentar un toast en caso de que los datos introducidos por el usuario no sean validos
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'No se aceptan simbolos.',
+      position: 'top',
+      duration: 1300
+    });
+    toast.present();
   }
   
 }

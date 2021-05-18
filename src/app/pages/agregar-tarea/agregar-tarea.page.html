@@ -7,25 +7,28 @@
     <ion-label></ion-label>
   </ion-item>
 
-  <!-- Boton que nos permite agregar el nombre de la tarea -->
-  <ion-item>
-    <!-- Envia el evento para poder modificar sus valores -->
-    <ion-input (ionChange)="obtenerNombreTarea( $event )" class="ion-text-center texto-grande"
-               placeholder="NOMBRE DE TAREA"></ion-input>
-  </ion-item>
+  <!-- Se agregan los datos al formulario para hacer las validaciones -->
+  <form [formGroup]="datosForm" (ionChange)="validar()">
+    <!-- Boton que nos permite agregar el nombre de la tarea -->
+    <ion-item>
+      <!-- Envia el evento para poder modificar sus valores -->
+      <ion-input (ionChange)="obtenerNombreTarea( $event )" class="ion-text-center texto-grande"
+                placeholder="NOMBRE DE TAREA" formControlName="nombreDeTarea"></ion-input>
+    </ion-item>
+
+    <!-- Boton que nos permite escribir los detalles de la tarea -->
+    <ion-item>
+      <!-- Envia el evento para poder modificar sus valores -->
+      <ion-textarea (ionChange)="obtenerDetalleTarea( $event )" class="ion-text-center texto-mediano margen"
+        placeholder="DETALLE DE TAREA" formControlName="detalleDeTarea"></ion-textarea>
+    </ion-item>
+  </form>
 
   <!-- Boton que nos permite agregar la fecha limite de la tarea -->
   <!-- Envia el evento para poder modificar sus valores -->
   <ion-item (ionChange)="fechaSeleccionado( $event )">
     <ion-label class="texto-grande ion-text-center" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
     <ion-datetime placeholder="SELECCIONAR" displayFormat="MMM DD, YYYY, HH" display-timezone="utc" min="2021-01-01" max="2050-12-31"></ion-datetime>
-  </ion-item>
-
-  <!-- Boton que nos permite escribir los detalles de la tarea -->
-  <ion-item>
-    <!-- Envia el evento para poder modificar sus valores -->
-    <ion-textarea (ionChange)="obtenerDetalleTarea( $event )" class="ion-text-center texto-mediano margen"
-      placeholder="DETALLE DE TAREA"></ion-textarea>
   </ion-item>
 
   <!-- Boton que nos permite seleccionar el status de la tarea -->
@@ -65,7 +68,8 @@
     <ion-button color="danger" (click)="cancelartarea()" expand="block">
       CANCELAR
     </ion-button>
-    <ion-button color="primary" (click)="agregarTareaModal()" expand="block">
+    <!-- Si el formulario no acepta los datos del usuario deshabilita el boton de aceptar -->
+    <ion-button color="primary" (click)="agregarTareaModal()" expand="block" [disabled]="isDisabled">
       ACEPTAR
     </ion-button>
   </ion-toolbar>

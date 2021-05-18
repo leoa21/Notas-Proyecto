@@ -7,12 +7,17 @@
     <ion-label></ion-label>
   </ion-item>
 
-  <!-- Boton que nos permite agregar el nombre de la materia -->
-  <ion-item>
-    <!-- Envia el evento para poder modificar sus valores -->
-    <ion-input (ionChange)="nombreMateria( $event )" class="ion-text-center texto-grande margen" 
-               placeholder="NOMBRE DE MATERIA"></ion-input>
-  </ion-item>
+  <!-- Se agregan los datos al formulario para hacer las validaciones -->
+  <form [formGroup]="datosForm" (ionChange)="validar()">
+    <ion-item>
+      <!-- Envia el evento para poder modificar sus valores -->
+      <!-- Boton que nos permite agregar el nombre de la materia -->
+      <ion-input (ionChange)="nombreMateria( $event )" 
+                 class="ion-text-center texto-grande margen" 
+                 placeholder="NOMBRE DE MATERIA"
+                 formControlName="nombreDeClase"></ion-input>
+    </ion-item>
+  </form>
 
   <!-- Opcion para modificar el color de la clase -->
   <ion-item lines="none">
@@ -43,7 +48,8 @@
     <ion-button color="danger" (click)="cancelarMateria()" expand="block">
       CANCELAR
     </ion-button>
-    <ion-button color="primary" (click)="agregarMateriaModal()" expand="block">
+    <!-- Si el formulario no acepta los datos del usuario deshabilita el boton de aceptar -->
+    <ion-button color="primary" (click)="agregarMateriaModal()" expand="block" [disabled]="isDisabled">
       ACEPTAR
     </ion-button>
   </ion-toolbar>
