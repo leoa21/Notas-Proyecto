@@ -18,6 +18,26 @@ _Features:_
 ## Pre-requisitos 📋
 _Se necesitaran ejecutar algunos comandos para poder instalar y usar la aplicacion (EN ORDEN)._
 
+### Instalaciones iniciales 🔧
+
+_Instalar la version LTS de Node.js de la siguiente pagina:_
+
+```
+https://nodejs.org/es/
+```
+
+_Instalar Angular con el comando:_
+
+```
+npm install -g @angular/cli
+```
+
+_Instalar Ionic con el comando:_
+
+```
+npm install -g @ionic/cli
+```
+
 ### Para VS Code 🔧
 
 _Instalacion de modulos._
@@ -41,7 +61,6 @@ _Para correr en el navegador._
 ```
 ionic serve
 ```
-
 
 ### Para Android Studio 🔧
 
@@ -73,9 +92,9 @@ Se uso [Git](https://git-scm.com/) para el versionado.
 
 ## Autores ✒️
 
-* **Brayan Israel Rivera Almaguer** - [BrayanRivera](https://github.com/BrayanRivera)
-* **Leonardo Damian Alvarez Mendoza** - [leoa21](https://github.com/leoa21)
-* **Luis Manuel Lopez Martinez** - [LuisManuelMtz99](https://github.com/LuisManuelMtz99)
+* **Brayan Israel Rivera Almaguer  1986177** - [BrayanRivera](https://github.com/BrayanRivera)
+* **Leonardo Damian Alvarez Mendoza  1986181** - [leoa21](https://github.com/leoa21)
+* **Luis Manuel Lopez Martinez  1986172** - [LuisManuelMtz99](https://github.com/LuisManuelMtz99)
 
 ## Nota 📄
 
