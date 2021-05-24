@@ -5,22 +5,22 @@
 
   <!-- Muesta el nombre de la tarea seleccionada -->
   <ion-item>
-    <ion-label class="ion-text-center texto-grande">{{arregloTareas[indiceDeTarea].nombreTarea}}</ion-label>
+    <ion-label class="ion-text-center texto-grande ion-margin">{{arregloTareas[indiceDeTarea].nombreTarea}}</ion-label>
   </ion-item>
 
   <!-- Muesta la fecha de la tarea seleccionada -->
   <ion-item>
-    <ion-label class="texto-grande ion-text-center" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
+    <ion-label class="texto-grande ion-text-center ion-margin" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
     <ion-label displayFormat="MMM DD, YYYY, HH:mm">{{arregloTareas[indiceDeTarea].fechaTarea | date}}</ion-label>
   </ion-item>
 
   <!-- Muesta los detalles de la tarea seleccionada -->
-  <ion-item>
+  <ion-item class="ion-margin">
     <ion-textarea class="ion-text-center" texto-grande>{{arregloTareas[indiceDeTarea].detalleTarea}}</ion-textarea>
   </ion-item>
 
   <!-- Muesta el status de la tarea seleccionada -->
-  <ion-item lines="none">
+  <ion-item lines="none" class = "ion-margin">
     <ion-label color="medium">STATUS: </ion-label>
     <!-- Se puede modificar el status y se llama el metodo con el evento como argumento para cambiar los valores -->
     <ion-select placeholder="{{placeHolder}}" cancelText="Cancelar" (ionChange)="statusSeleccionado( $event )" debounce="250">
@@ -34,7 +34,7 @@
   <ion-item class="margen centrado" lines="none">
     <ion-label class="icono-grande"><ion-icon color="{{ colorSeleccionado }}" slot="icon-only" name="caret-forward"></ion-icon></ion-label>
   </ion-item>
-  
+
 </ion-content>
 
 <!-- Footer de la aplicacion para regresar a la pagina anterior -->

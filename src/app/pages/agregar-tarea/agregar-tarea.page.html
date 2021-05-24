@@ -12,14 +12,16 @@
     <!-- Boton que nos permite agregar el nombre de la tarea -->
     <ion-item>
       <!-- Envia el evento para poder modificar sus valores -->
-      <ion-input (ionChange)="obtenerNombreTarea( $event )" class="ion-text-center texto-grande"
+      <ion-input (ionChange)="obtenerNombreTarea( $event )" class="ion-text-center texto-grande ion-margin"
                 placeholder="NOMBRE DE TAREA" formControlName="nombreDeTarea"></ion-input>
     </ion-item>
+
+
 
     <!-- Boton que nos permite escribir los detalles de la tarea -->
     <ion-item>
       <!-- Envia el evento para poder modificar sus valores -->
-      <ion-textarea (ionChange)="obtenerDetalleTarea( $event )" class="ion-text-center texto-mediano margen"
+      <ion-textarea (ionChange)="obtenerDetalleTarea( $event )" class="ion-text-center texto-mediano margen ion-margin"
         placeholder="DETALLE DE TAREA" formControlName="detalleDeTarea"></ion-textarea>
     </ion-item>
   </form>
@@ -27,12 +29,12 @@
   <!-- Boton que nos permite agregar la fecha limite de la tarea -->
   <!-- Envia el evento para poder modificar sus valores -->
   <ion-item (ionChange)="fechaSeleccionado( $event )">
-    <ion-label class="texto-grande ion-text-center" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
+    <ion-label class="texto-grande ion-text-center ion-margin" color="medium">FECHA <ion-icon name="calendar"></ion-icon></ion-label>
     <ion-datetime placeholder="SELECCIONAR" displayFormat="MMM DD, YYYY, HH" display-timezone="utc" min="2021-01-01" max="2050-12-31"></ion-datetime>
   </ion-item>
 
   <!-- Boton que nos permite seleccionar el status de la tarea -->
-  <ion-item lines="none">
+  <ion-item lines="none" class = "ion-margin">
     <ion-label color="medium">SELECCIONAR STATUS</ion-label>
     <!-- Envia el evento para poder modificar sus valores -->
     <ion-select placeholder="" cancelText="Cancelar" (ionChange)="statusSeleccionado( $event )" debounce="250">
@@ -50,18 +52,18 @@
   <ion-item class="">
     <ion-label></ion-label>
   </ion-item>
-    
+
   <ion-item lines="none">
-    <ion-label class="ion-text-center texto-grande" color="medium">TOMAR FOTO</ion-label>
+    <ion-label class="ion-text-center texto-grande ion-margin" color="medium">TOMAR FOTO</ion-label>
   </ion-item>
 
   <!-- Boton que nos permite tomar una foto cuando agreguemos una tarea -->
   <ion-button (click)="addPhotoToGallery()" expand="block" size="large">
     <ion-icon name="camera"></ion-icon>
   </ion-button>
-  
+
 </ion-content>
-    
+
 <!-- Footer de la aplicacion para aceptar o cancelar las modificaciones -->
 <ion-footer class="ion-no-border">
   <ion-toolbar>

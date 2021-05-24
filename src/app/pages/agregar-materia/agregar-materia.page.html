@@ -9,31 +9,34 @@
 
   <!-- Se agregan los datos al formulario para hacer las validaciones -->
   <form [formGroup]="datosForm" (ionChange)="validar()">
-    <ion-item>
-      <!-- Envia el evento para poder modificar sus valores -->
-      <!-- Boton que nos permite agregar el nombre de la materia -->
-      <ion-input (ionChange)="nombreMateria( $event )" 
-                 class="ion-text-center texto-grande margen" 
-                 placeholder="NOMBRE DE MATERIA"
-                 formControlName="nombreDeClase"></ion-input>
+      <ion-item>
+        <!-- Envia el evento para poder modificar sus valores -->
+        <!-- Boton que nos permite agregar el nombre de la materia -->
+          <ion-input (ionChange)="nombreMateria( $event )" class="ion-text-center texto-grande margen"
+            placeholder="NOMBRE MATERIA" formControlName="nombreDeClase"></ion-input>
     </ion-item>
   </form>
 
-  <!-- Opcion para modificar el color de la clase -->
-  <ion-item lines="none">
-    <ion-label class="ion-text-center texto-grande margen-plus" color="medium">ELEGIR COLOR  <ion-icon slot="end" name="color-palette"></ion-icon></ion-label>
-    <!-- Envia el evento para poder modificar sus valores -->
-    <ion-select placeholder="" cancelText="Cancelar" color="primary" (ionChange)="colorSeleccionado( $event )" debounce="250">
-      <ion-select-option value="azul">Azul</ion-select-option>
-      <ion-select-option value="rojo">Rojo</ion-select-option>
-      <ion-select-option value="amarillo">Amarillo</ion-select-option>
-      <ion-select-option value="verde">Verde</ion-select-option>
-      <ion-select-option value="naranja">Naranja</ion-select-option>
-      <ion-select-option value="morado">Morado</ion-select-option>
-      <ion-select-option value="celeste">Celeste</ion-select-option>
-      <ion-select-option value="rosa">Rosa</ion-select-option>
-    </ion-select>
-  </ion-item>
+        <!-- Opcion para modificar el color de la clase -->
+        <ion-item lines="none">
+          <ion-label class="ion-text-center texto-grande margen-plus" color="medium">ELEGIR COLOR <ion-icon slot="end"
+              name="color-palette"></ion-icon>
+          </ion-label>
+          <!-- Envia el evento para poder modificar sus valores -->
+          <ion-select placeholder="" cancelText="Cancelar" color="primary" (ionChange)="colorSeleccionado( $event )"
+            debounce="250">
+            <ion-select-option value="azul">Azul</ion-select-option>
+            <ion-select-option value="rojo">Rojo</ion-select-option>
+            <ion-select-option value="amarillo">Amarillo</ion-select-option>
+            <ion-select-option value="verde">Verde</ion-select-option>
+            <ion-select-option value="naranja">Naranja</ion-select-option>
+            <ion-select-option value="morado">Morado</ion-select-option>
+            <ion-select-option value="celeste">Celeste</ion-select-option>
+            <ion-select-option value="rosa">Rosa</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
 
   <!-- Figura cuadrara que mostrara el color seleccionado dependiendo del valor elegido -->
   <ion-item class="margen centrado" lines="none">

@@ -91,7 +91,7 @@
   --ion-color-rojo-shade: #e05353;
   --ion-color-rojo-tint: #ff6e6e;
 
-  //AMARILLO 
+  //AMARILLO
   --ion-color-amarillo: #FFF972;
   --ion-color-amarillo-rgb: 255,249,114;
   --ion-color-amarillo-contrast: #000000;
@@ -99,7 +99,7 @@
   --ion-color-amarillo-shade: #e0db64;
   --ion-color-amarillo-tint: #fffa80;
 
-  //VERDE 
+  //VERDE
   --ion-color-verde: #5EFF81;
   --ion-color-verde-rgb: 94,255,129;
   --ion-color-verde-contrast: #000000;
@@ -123,7 +123,7 @@
   --ion-color-morado-shade: #b963e0;
   --ion-color-morado-tint: #d77eff;
 
-  //CELESTE 
+  //CELESTE
   --ion-color-celeste: #90edfe;
   --ion-color-celeste-rgb: 144,237,254;
   --ion-color-celeste-contrast: #000000;
@@ -138,6 +138,8 @@
   --ion-color-rosa-contrast-rgb: 0,0,0;
   --ion-color-rosa-shade: #e08fbf;
   --ion-color-rosa-tint: #ffacdd;
+
+  --ion-margin: 20px;
 }
 
 //@media (prefers-color-scheme: dark) {
