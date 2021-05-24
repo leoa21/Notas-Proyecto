@@ -51,12 +51,12 @@
 <ion-footer>
   <ion-toolbar>
     <!-- Este metodo se encarga de cargar las fotos -->
-    <ion-tab-button slot="start" (click)="verPhotos()">
+    <ion-tab-button class="boton-i" slot="start" (click)="verPhotos()">
       <ion-icon color="medium" name="images"></ion-icon>
       <ion-label color="medium">FOTOS</ion-label>
     </ion-tab-button>
     <!-- Este metodo se encarga de regresar a la pagina principal -->
-    <ion-tab-button slot="end" tab="tab1" [routerLink]="['/']">
+    <ion-tab-button class="boton-d" slot="end" tab="tab1" [routerLink]="['/']">
       <ion-icon color="medium" name="home"></ion-icon>
       <ion-label color="medium">INICIO</ion-label>
     </ion-tab-button>
