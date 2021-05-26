@@ -21,12 +21,17 @@
     "@angular/router": "~11.2.0",
     "@capacitor/android": "^2.4.7",
     "@capacitor/core": "2.4.7",
+    "@ionic-native/core": "^5.33.0",
+    "@ionic-native/sqlite": "^5.33.0",
+    "@ionic-native/sqlite-porter": "^5.33.0",
     "@ionic/angular": "^5.5.2",
     "@ionic/pwa-elements": "^3.0.2",
     "@ionic/storage-angular": "^3.0.6",
+    "cordova-sqlite-storage": "^6.0.0",
     "rxjs": "~6.6.0",
     "save-dev": "0.0.1-security",
     "tslib": "^2.0.0",
+    "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.1.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

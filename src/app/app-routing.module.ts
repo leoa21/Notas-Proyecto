@@ -27,7 +27,8 @@ const routes: Routes = [
   {
     path: 'agregar-tarea',
     loadChildren: () => import('./pages/agregar-tarea/agregar-tarea.module').then( m => m.AgregarTareaPageModule)
-  },  {
+  },
+  {
     path: 'detalles-tarea',
     loadChildren: () => import('./pages/detalles-tarea/detalles-tarea.module').then( m => m.DetallesTareaPageModule)
   },
@@ -40,13 +41,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/noticia/noticia.module').then( m => m.NoticiaPageModule)
   },
   {
-    path: 'notas',
-    loadChildren: () => import('./pages/notas/notas.module').then( m => m.NotasPageModule)
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'agregar-nota',
-    loadChildren: () => import('./pages/agregar-nota/agregar-nota.module').then( m => m.AgregarNotaPageModule)
+    path: 'song/:id',
+    loadChildren: () => import('./pages/song/song.module').then( m => m.SongPageModule)
   },
+
+
 
 
 
