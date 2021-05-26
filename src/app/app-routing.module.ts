@@ -39,6 +39,14 @@ const routes: Routes = [
     path: 'noticia',
     loadChildren: () => import('./pages/noticia/noticia.module').then( m => m.NoticiaPageModule)
   },
+  {
+    path: 'notas',
+    loadChildren: () => import('./pages/notas/notas.module').then( m => m.NotasPageModule)
+  },
+  {
+    path: 'agregar-nota',
+    loadChildren: () => import('./pages/agregar-nota/agregar-nota.module').then( m => m.AgregarNotaPageModule)
+  },
 
 
 
