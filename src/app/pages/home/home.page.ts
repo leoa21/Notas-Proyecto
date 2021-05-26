@@ -48,7 +48,7 @@ export class HomePage implements OnInit {
   deleteSong(id){
     this.db.deleteSong(id).then(async(res) => {
       let toast = await this.toast.create({
-        message: 'Song deleted',
+        message: 'Nota eliminada',
         duration: 2500
       });
       toast.present();      

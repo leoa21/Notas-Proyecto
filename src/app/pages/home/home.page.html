@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-list lines="full">
     <form [formGroup]="mainForm" (ngSubmit)="storeData()">
       <ion-item>
@@ -32,14 +32,14 @@
     </form>
   </ion-list>
 
-    <ion-list>
-    <ion-list-header>
+  <ion-list>
+    <ion-label>
       Notas
-    </ion-list-header>
+    </ion-label>
 
-    <ion-item lines="inset" *ngFor="let data of Data">
+    <ion-card lines="inset" *ngFor="let data of Data">
       <ion-label>
-        <h5>{{data.artist_name}}</h5>
+        <h2>{{data.artist_name}}</h2>
         <p>{{data.song_name}}</p>
       </ion-label>
 
@@ -47,6 +47,6 @@
         <ion-icon name="create" style="zoom:2.0" [routerLink]="['/song/', data.id]"></ion-icon>        
         <ion-icon name="trash" style="zoom:2.0" (click)="deleteSong(data.id)"></ion-icon>
       </div>
-    </ion-item>
+    </ion-card>
   </ion-list>
 </ion-content>

@@ -62,6 +62,36 @@ _Para correr en el navegador._
 ionic serve
 ```
 
+### Instalar SQLite 🔧
+
+_Plugin de SQLite._
+
+```
+npm install @ionic-native/sqlite
+```
+
+```
+npm install cordova-sqlite-storage
+```
+
+```
+npm i @ionic-native/core
+```
+
+_Instalacion de SQLite Porter._
+
+```
+npm install uk.co.workingedge.cordova.plugin.sqliteporter
+```
+
+```
+npm install @ionic-native/sqlite-porter
+```
+
+```
+ionic cap sync
+```
+
 ### Para Android Studio 🔧
 
 _Construir la aplicacion._
